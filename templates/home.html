@@ -1,4 +1,37 @@
 {% extends 'base.html' %}
+{%load static%}
+{% block header %}
+
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+{% endblock header %}
 {%block body%}
-fn
+<div class='header'>
+    <img src="{%static 'img/LOGO.svg'%}" width="150" height="50">
+        <div class='section-header'>
+            <strong><p>Home</p></strong>
+            <strong><p>Sobre</p></strong>
+            <strong><p>Contato</p></strong>
+            <strong><p>Ajuda</p></strong>
+        </div>
+        <div class='section2-header'>
+            <strong><p>Login</p></strong>
+            <button class='btn-header'>Criar Conta</button>
+        </div>
+</div>
+<div class='main'>
+    <div class='section1-main'>
+        {% comment %} <div class='section1-main'> {% endcomment %}
+            <H4>Smart Garden</H4>
+            <p>A melhor opção em cuidado com o seu jardim!</p>
+            <img src="{%static 'img/sammy-line-20 1.svg'%}" width='350'height='350'>
+        {% comment %} </div> {% endcomment %}
+    </div>
+    <div class='section2-main'>
+        <input class='input-main' type="text" placeholder='Insira seu Username'>
+        <input class='input-main' type="password" placeholder='Insira sua Senha'>
+        <strong><p>Esqueci Minha Senha</p></strong>
+        <input class='btn-header' type="submit">
+    </div>
+    
+</div>
 {%endblock%}
