@@ -1,37 +1,49 @@
-{% extends 'base.html' %}
-{%load static%}
-{% block header %}
+{% extends 'base.html' %} {%load static%} {% block header %}
 
-<link rel="stylesheet" href="{% static 'css/header.css' %}">
-{% endblock header %}
-{%block body%}
-<div class='header'>
-    <img src="{%static 'img/LOGO.svg'%}" width="150" height="50">
-        <div class='section-header'>
-            <strong><p>Home</p></strong>
-            <strong><p>Sobre</p></strong>
-            <strong><p>Contato</p></strong>
-            <strong><p>Ajuda</p></strong>
-        </div>
-        <div class='section2-header'>
-            <strong><p>Login</p></strong>
-            <button class='btn-header'>Criar Conta</button>
-        </div>
+<link rel="stylesheet" href="{% static 'css/header.css' %}" />
+{% endblock header %} {%block body%}
+<div class="header">
+	<img src="{%static 'img/LOGO.svg'%}" width="150" height="50" />
+	<div class="section-header">
+		<strong><p>Home</p></strong>
+		<strong><p>Sobre</p></strong>
+		<strong><p>Contato</p></strong>
+		<strong><p>Ajuda</p></strong>
+	</div>
+	<div class="section2-header">
+		<strong><p>Login</p></strong>
+		<button class="btn-header">Criar Conta</button>
+	</div>
 </div>
-<div class='main'>
-    <div class='section1-main'>
-        {% comment %} <div class='section1-main'> {% endcomment %}
-            <h2 class='smg'>Smart Garden</h2>
-            <h6 class='smg'><p>A melhor opção em cuidado com o seu <br>jardim!</p></h6>
-            <img src="{%static 'img/sammy-line-20 1.svg'%}" width='350'height='350'>
-        {% comment %} </div> {% endcomment %}
-    </div>
-    <div class='section2-main'>
-        <input class='input-main' type="text" placeholder='Insira seu Username' name='username'>
-        <input class='input-main' type="password" placeholder='Insira sua Senha' name ='password'>
-        <strong><p>Esqueci Minha Senha</p></strong>
-        <input class='btn-main' type="submit" value='Login'>
-    </div>
-    
+<div class="main">
+	<div class="section1-main">
+		{% comment %}
+		<div class="section1-main">
+			{% endcomment %}
+			<h2 class="smg">Smart Garden</h2>
+			<h6 class="smg">
+				<p>A melhor opção em cuidado com o seu <br />jardim!</p>
+			</h6>
+			<img src="{%static 'img/sammy-line-20 1.svg'%}" width="350" height="350" />
+			{% comment %}
+		</div>
+		{% endcomment %}
+	</div>
+	<div class="section2-main">
+		<input
+			class="input-main"
+			type="text"
+			placeholder="Insira seu Username"
+			name="username"
+		/>
+		<input
+			class="input-main"
+			type="password"
+			placeholder="Insira sua Senha"
+			name="password"
+		/>
+		<strong><p>Esqueci Minha Senha</p></strong>
+		<input class="btn-main" type="submit" value="Login" />
+	</div>
 </div>
 {%endblock%}

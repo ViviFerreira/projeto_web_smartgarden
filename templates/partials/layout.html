@@ -1,0 +1,32 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- CSS only -->
+		<link rel="stylesheet" href="{%static 'css/layout.css'%}" />
+		<link rel="stylesheet" href="{%static 'css/layout_header.css'%}" />
+		<link rel="stylesheet" href="{%static 'css/layout_sidebar.css'%}" />
+		<link rel="stylesheet" href="{%static 'css/global.css'%}" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		<title>SmartGarden</title>
+	</head>
+	<body>
+		<section class="layout">
+			<header>{% include 'partials/header.html' %}</header>
+			<aside id="section-pd">{% include 'partials/sidebar.html' %}</aside>
+			<main id="main-ml">{% block content %} {% endblock %}</main>
+		</section>
+
+		<script
+			src="https://kit.fontawesome.com/be79eaef8b.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="{%static 'js/sidebar.js'%}"></script>
+	</body>
+</html>

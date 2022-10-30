@@ -5,5 +5,5 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('padrao/', views.telaPadrao, name='tela-padrao'),
+    path('inicio/', views.inicio, name='inicio'),
 ]
