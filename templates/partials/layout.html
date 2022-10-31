@@ -5,32 +5,24 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- CSS only -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
 		<link rel="stylesheet" href="{%static 'css/layout.css'%}" />
 		<link rel="stylesheet" href="{%static 'css/layout_header.css'%}" />
 		<link rel="stylesheet" href="{%static 'css/layout_sidebar.css'%}" />
 		<link rel="stylesheet" href="{%static 'css/global.css'%}" />
-		<link rel="stylesheet" href="{%static 'css/verArea.css'%}" />
+		<link rel="stylesheet" href="{%static 'css/areas.css'%}" />
+		<link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet" />
 		<link rel="icon" href="{%static 'img/icon.png'%}" />
-		
-		<link
-			href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
-			rel="stylesheet"
-		/>
 		<title>SmartGarden</title>
 	</head>
-	<body>
+	<body id="body-pd">
 		<section class="layout">
 			<header>{% include 'partials/header.html' %}</header>
 			<aside id="section-pd">{% include 'partials/sidebar.html' %}</aside>
 			<main id="main-ml">{% block content %} {% endblock %}</main>
 		</section>
 
-		<script
-			src="https://kit.fontawesome.com/be79eaef8b.js" crossorigin="anonymous"
-		></script>
+		<script src="https://kit.fontawesome.com/be79eaef8b.js" crossorigin="anonymous"></script>
 		<script src="{%static 'js/sidebar.js'%}"></script>
-		
 	</body>
 </html>

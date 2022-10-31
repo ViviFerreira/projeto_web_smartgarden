@@ -7,5 +7,5 @@ def home(request):
 def inicio(request):
     return render(request, 'inicio.html')
 
-def verArea(request):
-    return render(request, 'verArea.html')
+def areas(request):
+    return render(request, 'areas.html')

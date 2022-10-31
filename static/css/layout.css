@@ -21,7 +21,7 @@ main {
 }
 
 .main-ml {
-	margin-left: calc(var(--nav-width) + 156px);
+	padding-left: calc(var(--nav-width) + 156px);
 }
 
 aside {
