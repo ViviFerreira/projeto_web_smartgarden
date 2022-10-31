@@ -5,4 +5,7 @@ def home(request):
     return render(request, 'home.html')
 
 def inicio(request):
-    return render(request, 'inicio.html') 
+    return render(request, 'inicio.html')
+
+def verArea(request):
+    return render(request, 'verArea.html')

@@ -1,0 +1,52 @@
+.container{
+    padding: 0;
+    margin-bottom: 0
+}
+
+.title-Page{
+    padding: 0;
+}
+
+/*cards*/
+
+.card{
+    border: solid 1px #36ae7c;
+    border-radius: 15px;
+    padding: 0;
+    margin:0;
+    width: 220px;
+    height: 170px;
+}
+
+.card-title{
+    font-size: 20px;
+    font-weight: bolder;
+    color: #3F3D3D;
+    display: flex;
+    opacity: 65%;
+}
+
+.card-text{
+    color: #36ae7c;
+    font-size: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+/* description-bar */
+
+.descricao{
+    margin-top: 20px;
+}
+
+.descricao ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.descricao ul li{
+    display: inline-block;
+    padding-right: 240px;
+}
