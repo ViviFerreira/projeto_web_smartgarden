@@ -40,13 +40,30 @@
 }
 
 .descricao ul {
+    width: auto;
     list-style: none;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding-left: 20px;
+
 }
 
 .descricao ul li{
     display: inline-block;
-    padding-right: 240px;
+    margin-right: 250px;
+    color: #3F3D3D;
 }
+
+/* tabela */
+
+tbody tr{
+    border:1px solid #36ae7c;
+}
+
+tbody tr th{
+    width: 270px;
+}
+
+tbody tr td{
+    width: 290px;
+}
+
