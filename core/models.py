@@ -1,29 +1,33 @@
-from statistics import mode
-
 from django.contrib.auth.models import User
 from django.db import models
-
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 class Categoria(models.Model):
     nome = models.CharField(max_length=45)
-
-
+    
 class AreaCultivo(models.Model):
     nome = models.CharField(max_length=100)
+    disponivel = models.BooleanField(blank=False, null=True, default=True)
+    apto = models.BooleanField(blank=False, null=True, default=True)
 
-
-class Plantação(models.Model):
-    descrição = models.CharField(max_length=100)
+class Plantacao(models.Model):
+    descricao = models.CharField(max_length=100)
     qntDiasColheita = models.IntegerField
     qntPlantada = models.IntegerField
-    dPlantio = models.DateTimeField(auto_now_add=True)
+    dtPlantio = models.DateTimeField(auto_now_add=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     areacultivo = models.ForeignKey(AreaCultivo, on_delete=models.CASCADE)
+    colhida = models.BooleanField(blank=False, null=False, default=False)
 
+class Irrigacao_Programacao(models.TextChoices):
+    NAO_REPETE = 'NAO_REPETE', _('Não se repete')
+    TODOS_DIAS = 'TODOS_DIAS', _('Todos os dias')
+    PERSONALIZAR = 'PERSONALIZAR', _('Personalizar...')
 
-class Irrigação(models.Model):
-    horario = models.DateTimeField(auto_now_add=True)
-    duração = models.TimeField(auto_now_add=True)
-    flConcluida = models.BooleanField
-    plantacao = models.ForeignKey(Plantação, on_delete=models.CASCADE)
+class Irrigacao(models.Model):
+    horario = models.DateTimeField()
+    duracao = models.TimeField()
+    concluida = models.BooleanField(blank=False, null=False, default=False)
+    plantacao = models.ForeignKey(Plantacao, on_delete=models.CASCADE)
+    programacao = models.TextField(choices=Irrigacao_Programacao.choices,max_length=20, null=True, default=0)
