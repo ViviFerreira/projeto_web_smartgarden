@@ -1,0 +1,6 @@
+.container_forms {
+	width: 98%;
+	height: 60%;
+	border-top: 2px solid var(--green-primary);
+	background-color: var(--white-color);
+}

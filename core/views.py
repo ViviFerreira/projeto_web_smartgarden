@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .forms import FormAreas
 
  #Create your views here.
 def home(request):
@@ -9,3 +10,8 @@ def inicio(request):
 
 def areas(request):
     return render(request, 'areas.html')
+
+def cadastrar_areas(request):
+    form = FormAreas()
+    contexto = {'form':form}
+    return render(request, 'cadastrar_areas.html', contexto)

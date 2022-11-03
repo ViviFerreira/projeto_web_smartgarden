@@ -10,8 +10,8 @@ class Categoria(models.Model):
     
 class AreaCultivo(models.Model):
     nome = models.CharField(max_length=100)
-    disponivel = models.BooleanField(blank=False, null=True, default=True)
-    apto = models.BooleanField(blank=False, null=True, default=True)
+    disponivel = models.BooleanField(blank=False, null=False, default=True)
+    apto = models.BooleanField(blank=False, null=False, default=True)
     def __str__(self):
         return self.nome
 

@@ -1,69 +1,63 @@
-.container{
-    padding: 0;
-    margin-bottom: 0
-}
-
-.title-Page{
-    padding: 0;
+.container {
+	padding: 0;
+	margin-bottom: 0;
 }
 
 /*cards*/
 
-.card{
-    border: solid 1px #36ae7c;
-    border-radius: 15px;
-    padding: 0;
-    margin:0;
-    width: 220px;
-    height: 170px;
+.card {
+	border: solid 1px var(--green-primary);
+	border-radius: 15px;
+	padding: 0;
+	margin: 0;
+	width: 220px;
+	height: 170px;
 }
 
-.card-title{
-    font-size: 20px;
-    font-weight: bolder;
-    color: #3F3D3D;
-    display: flex;
-    opacity: 65%;
+.card-title {
+	font-size: 20px;
+	font-weight: bolder;
+	color: #3f3d3d;
+	display: flex;
+	opacity: 65%;
 }
 
-.card-text{
-    color: #36ae7c;
-    font-size: 70px;
-    display: flex;
-    justify-content: center;
+.card-text {
+	color: var(--green-primary);
+	font-size: 70px;
+	display: flex;
+	justify-content: center;
 }
 
 /* description-bar */
 
-.descricao{
-    margin-top: 20px;
+.descricao {
+	margin-top: 20px;
 }
 
 .descricao ul {
-    width: auto;
-    list-style: none;
-    display: flex;
-    padding-left: 20px;
-
+	width: auto;
+	list-style: none;
+	display: flex;
+	padding-left: 20px;
 }
 
-.descricao ul li{
-    display: inline-block;
-    margin-right: 250px;
-    color: #3F3D3D;
+.descricao ul li {
+	display: inline-block;
+	margin-right: 250px;
+	color: #3f3d3d;
 }
 
 /* tabela */
 
-tbody tr{
-    border:1px solid #36ae7c;
+tbody tr {
+	border: 1px solid var(--green-primary);
 }
 
-tbody tr th{
-    width: 270px;
+tbody tr th {
+	width: 270px;
 }
 
-tbody tr td{
-    width: 290px;
+tbody tr td {
+	width: 290px;
 }
-
