@@ -10,7 +10,8 @@
 	--nav-width: 68px;
 	--gray-dark: #3f3d3d;
 	--green-primary: #0bd692;
-	--white-color: #f7f6fb;
+	--green-secondary: #36ae7c;
+	--white-color: #ffffff;
 	--light-color: #eeeeee;
 	--body-font: 'Inter', sans-serif;
 	--title-font: 'Roboto' sans-serif;
@@ -33,7 +34,6 @@ body {
 }
 
 .title-page {
-	padding-top: 1rem;
 	font-family: var(--title-font);
 	font-weight: 700;
 	font-size: 1.1rem;

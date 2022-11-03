@@ -2,7 +2,7 @@
 	display: flex;
 	align-items: center;
 	padding: 10px;
-	background-color: #f9f9f9;
+	background-color: var(--white-color);
 	list-style: none;
 	font-size: 20px;
 	justify-content: space-between;
@@ -18,19 +18,23 @@
 }
 
 .itens li:not(:last-child):hover {
-	color: #36ae7c;
+	color: var(--green-secondary);
 }
 
 .itens li:last-child:hover {
-	color: #fff;
+	color: var(--white-color);
 }
 
 .circle {
 	display: flex;
 	width: 40px;
 	height: 40px;
-	background-color: #36ae7c;
+	background-color: var(--green-secondary);
 	border-radius: 25px;
 	justify-content: center;
 	align-items: center;
+}
+
+.circle a i {
+	color: var(--white-color);
 }

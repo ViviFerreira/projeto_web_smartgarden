@@ -17,13 +17,14 @@ main {
 	position: relative;
 	transition: 0.5s;
 	padding-top: 1rem;
-	padding-left: calc(var(--nav-width) + 1%);
+	padding-left: calc(var(--nav-width) + 1.1rem);
+	padding-right: 1%;
 	background-color: var(--light-color);
 	max-width: 100vw;
 }
 
 .main-ml {
-	padding-left: calc(var(--nav-width) + 1% + 156px);
+	padding-left: calc(var(--nav-width) + 1.1rem + 156px);
 }
 
 aside {
