@@ -5,11 +5,15 @@ from django.utils.translation import gettext_lazy as _
 # Create your models here.
 class Categoria(models.Model):
     nome = models.CharField(max_length=45)
+    def __str__(self):
+        return self.nome
     
 class AreaCultivo(models.Model):
     nome = models.CharField(max_length=100)
     disponivel = models.BooleanField(blank=False, null=True, default=True)
     apto = models.BooleanField(blank=False, null=True, default=True)
+    def __str__(self):
+        return self.nome
 
 class Plantacao(models.Model):
     descricao = models.CharField(max_length=100)
@@ -19,6 +23,8 @@ class Plantacao(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     areacultivo = models.ForeignKey(AreaCultivo, on_delete=models.CASCADE)
     colhida = models.BooleanField(blank=False, null=False, default=False)
+    def __str__(self):
+        return self.descricao
 
 class Irrigacao_Programacao(models.TextChoices):
     NAO_REPETE = 'NAO_REPETE', _('Não se repete')
@@ -31,3 +37,4 @@ class Irrigacao(models.Model):
     concluida = models.BooleanField(blank=False, null=False, default=False)
     plantacao = models.ForeignKey(Plantacao, on_delete=models.CASCADE)
     programacao = models.TextField(choices=Irrigacao_Programacao.choices,max_length=20, null=True, default=0)
+   
