@@ -6,8 +6,9 @@
 	background-color: var(--white-color);
 }
 
-.btn_cancelar {
-	background-color: var(--gray-dark);
+.btn_cancelar,
+.btn_cancelar:hover {
+	background-color: var(--gray-dark) !important;
 	color: var(--white-color);
 	float: right;
 }
