@@ -50,10 +50,6 @@
 
 /* tabela */
 
-tbody tr {
-	border: 1px solid var(--green-primary);
-}
-
 tbody tr th {
 	width: 270px;
 }
