@@ -2,7 +2,7 @@ body {
 	background-color: var(--green-primary);
 }
 .header {
-	background-color: rgb(245, 235, 235);
+	background-color: var(--white-color);
 	height: 10vh;
 	width: 100%;
 	display: flex;
@@ -23,7 +23,7 @@ body {
 }
 .btn-header {
 	background-color: var(--gray-dark);
-	color: white;
+	color: var(--white-color);
 	width: 130px;
 	height: 35px;
 	border-radius: 50px;
@@ -60,7 +60,7 @@ body {
 	padding-left: 15px;
 }
 .smg {
-	color: var(--green-secondary);
+	color: var(--white-color);
 }
 .btn-main {
 	background-color: var(--gray-dark);

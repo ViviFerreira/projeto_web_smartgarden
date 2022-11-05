@@ -1,8 +1,10 @@
 {% extends 'layout.html' %} {% load static %} {% block content %}
 <div>
-	<div>
+	<div class="d-flex align-items-center justify-content-between mb-3">
 		<p class="title-page">Áreas de Cultivo</p>
+		<a href="{% url 'cadastrar_areas' %}"><button type="button" class="btn btn_salvar">Adicionar</button></a>
 	</div>
+	
 	<div class="row">
 		<div class="col-sm-3">
 			<div class="card">
@@ -47,6 +49,7 @@
 					<th scope="col">Nome</th>
 					<th scope="col">Ocupação</th>
 					<th scope="col">Status</th>
+					<th scope="col"></i>Ação</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -63,6 +66,8 @@
 					{% else %}
 					<td>Inapta</td>
 					{% endif %}
+					<td><i class="bi bi-three-dots-vertical"></i></i></td>
+
 				</tr>
 				{% endfor %}
 			</tbody>
