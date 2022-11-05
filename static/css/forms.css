@@ -6,16 +6,10 @@
 	background-color: var(--white-color);
 }
 
-.btn_cancelar,
-.btn_cancelar:hover {
-	background-color: var(--gray-dark) !important;
-	color: var(--white-color);
-	float: right;
-}
-
-.btn_salvar {
-	background-color: var(--green-secondary);
-	color: var(--white-color);
+.btn_salvar,
+.btn_salvar:hover {
+	background-color: var(--green-secondary) !important;
+	color: var(--white-color) !important;
 	float: right;
 	margin-left: 0.5rem;
 }

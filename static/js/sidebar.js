@@ -23,13 +23,21 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 	showNavbar('btn-toggle', 'nav-bar', 'section-pd');
 
-	const linkColor = document.querySelectorAll('.nav_link');
+	const saveLinkActive = (id) =>
+		localStorage.setItem('linkActive', JSON.stringify(id));
 
-	function colorLink() {
-		if (linkColor) {
-			linkColor.forEach((l) => l.classList.remove('active'));
-			this.classList.add('active');
-		}
-	}
-	linkColor.forEach((l) => l.addEventListener('click', colorLink));
+	const getLinkActive = () => JSON.parse(localStorage.getItem('linkActive'));
+
+	const linkSidebar = document.querySelectorAll('.link_sidebar');
+
+	idLinkActive = getLinkActive();
+	const link_active = document.getElementById(idLinkActive);
+
+	link_active.classList.add('active');
+	linkSidebar.forEach(
+		(l) =>
+			(l.onclick = function () {
+				saveLinkActive(this.id);
+			})
+	);
 });

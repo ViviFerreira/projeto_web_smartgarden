@@ -4,6 +4,7 @@
 <p />
 
 <section class="container_forms">
+	{% include 'partials/_alerts.html '%}
 	<form action="{% url 'cadastrar_areas' %}" method="post">
 		{% csrf_token %} {% for field in form.visible_fields %}
 		<div class="form-group col-6 mb-3">
@@ -18,8 +19,7 @@
 			{{field|add_class:'form-control'}} {% endif %}
 		</div>
 		{% endfor %}
-		<input type="submit" value="Cadastrar" class="btn btn-sm btn_salvar" />
-		<input type="submit" value="Cancelar" class="btn btn-sm btn_cancelar" />
+		<input type="submit" value="Cadastrar" class="btn btn_salvar" />
 	</form>
 </section>
 

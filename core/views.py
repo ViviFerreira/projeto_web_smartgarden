@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.db.models.aggregates import Count
+from django.contrib import messages
 from .forms import FormAreas
 from .models import *
 
@@ -32,11 +33,6 @@ def cadastrar_areas(request):
     form = FormAreas(request.POST or None)
     if form.is_valid():
         form.save()
+        messages.success(request, 'Área de cultivo cadastrada com sucesso!')
     contexto = {'form':form}
-
     return render(request, 'cadastrar_areas.html', contexto)
-
-def teste(request):
-    qntDisponivel = AreaCultivo.objects.filter(disponivel=True).count()
-
-    return HttpResponse(qntDisponivel)

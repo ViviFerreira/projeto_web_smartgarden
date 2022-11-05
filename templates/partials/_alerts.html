@@ -1,0 +1,9 @@
+{% if messages %} {% for message in messages %}
+<div class="alert alert-{{message.tags}} col-6 mt-1 mb-3" role="alert">
+	{% if message.tags == 'success' %}
+	<i class="fa-regular fa-thumbs-up"></i>
+	{% else %}
+	<i class="fa-regular fa-thumbs-down"></i>
+	{% endif %} {{ message }}
+</div>
+{% endfor %} {% endif %}
