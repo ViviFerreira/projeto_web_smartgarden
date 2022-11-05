@@ -46,6 +46,11 @@ def login(request):
             return redirect("inicio/")
 
 
+def logout(request):
+    auth.logout(request)
+    return redirect("/")
+
+
 def inicio(request):
     return render(request, 'inicio.html')
 
