@@ -72,8 +72,6 @@ def areas(request):
 
     return render(request, 'areas.html', contexto)
 
-def plantacoes(request):
-    return render(request, 'plantações.html')
 
 def cadastrar_areas(request):
     form = FormAreas(request.POST or None)
@@ -84,10 +82,27 @@ def cadastrar_areas(request):
     return render(request, 'cadastrar_areas.html', contexto)
 
 
+def update_areas(request, id):
+    area = AreaCultivo.objects.get(id=id)
+    form = FormAreas(instance=area)
+
+    if request.method == 'POST':
+        form = FormAreas(request.POST, instance=area)
+        if form.is_valid():
+            form.save()
+            return redirect('areas')
+    return render(request, 'update_areas.html', {'formareas': form})
+
+
 def delete_areas(request, id):
     area = get_object_or_404(AreaCultivo, pk=id)
     area.delete()
     return redirect("areas")
+
+
+def plantacoes(request):
+    return render(request, 'plantações.html')
+
 
 def cadastrar_plantacoes(request):
     form = FormPlantacoes(request.POST or None)
@@ -99,4 +114,3 @@ def cadastrar_plantacoes(request):
     contexto = {'form': form}
 
     return render(request, 'cadastrar_plantacoes.html', contexto)
-
