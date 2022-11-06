@@ -2,7 +2,7 @@ from django.contrib import auth, messages
 from django.contrib.messages import constants
 from django.db.models.aggregates import Count
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import FormAreas
 from .models import *
@@ -80,3 +80,9 @@ def cadastrar_areas(request):
         messages.success(request, 'Área de cultivo cadastrada com sucesso!')
     contexto = {'form': form}
     return render(request, 'cadastrar_areas.html', contexto)
+
+
+def delete_areas(request, id):
+    area = get_object_or_404(AreaCultivo, pk=id)
+    area.delete()
+    return redirect("areas")

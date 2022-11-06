@@ -10,5 +10,6 @@ urlpatterns = [
     path("logout/", views.logout, name="logout"),
     path('inicio/', views.inicio, name='inicio'),
     path('areas/', views.areas, name='areas'),
-    path('areas/cadastrar_areas/', views.cadastrar_areas, name='cadastrar_areas')
+    path('areas/cadastrar_areas/', views.cadastrar_areas, name='cadastrar_areas'),
+    path('delete_areas/<int:id>', views.delete_areas, name='delete_areas'),
 ]
