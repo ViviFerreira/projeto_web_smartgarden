@@ -1,0 +1,26 @@
+
+{%load static%}
+{% block header %}
+
+{%endblock header %}
+
+{% block body%}
+
+<br>
+    <div class="container1">
+        <form action="{%url 'cadastro'%}" method="POST">{% csrf_token %}
+            <label>Nome</label>
+            <br>
+            <input placeholder="Digite seu Username" type="text" name="username" class="form-control">
+            <br>
+            <label>Email</label>
+            <br>
+            <input placeholder="Digite seu Email" type="email" name="email" class="form-control">
+            <br>
+            <label>Senha</label>
+            <input placeholder="Digite sua senha" type="password" name="senha" class="form-control">
+            <br>
+            <button type="submit" class="btn btn-dark medio">Cadastrar Usuário</button>
+        </form>
+    </div>
+{%endblock body%}

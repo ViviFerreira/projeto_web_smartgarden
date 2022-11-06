@@ -1,16 +1,59 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib import auth, messages
+from django.contrib.messages import constants
 from django.db.models.aggregates import Count
-from django.contrib import messages
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
+
 from .forms import FormAreas
 from .models import *
 
- #Create your views here.
-def home(request):
-    return render(request, 'home.html')
+# Create your views here.
+
+
+def cad(request):
+    if request.method == "GET":
+        return render(request, "cad.html")
+    elif request.method == "POST":
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        senha = request.POST.get("senha")
+        try:
+            user = User.objects.create_user(
+                username=username, email=email, password=senha
+            )
+            user.save()
+            return render(request, "home.html")
+        except:
+            return render(request, "cad.html")
+
+
+def login(request):
+    if request.method == "GET":
+        return render(request, "home.html")
+    elif request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = auth.authenticate(username=username, password=password)
+
+        if not user:
+            messages.add_message(
+                request, constants.ERROR, "Username ou senha inválidos"
+            )
+            return redirect("/")
+        else:
+            auth.login(request, user)
+            return redirect("inicio/")
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect("/")
+
 
 def inicio(request):
     return render(request, 'inicio.html')
+
 
 def areas(request):
     areas = AreaCultivo.objects.all()
@@ -20,22 +63,20 @@ def areas(request):
     qntInapta = AreaCultivo.objects.filter(apta=False).count()
 
     contexto = {
-        'areas': areas, 
+        'areas': areas,
         'qntDisponivel': qntDisponivel,
         'qntOcupado': qntOcupado,
         'qntApta': qntApta,
         'qntInapta': qntInapta,
     }
 
-    return render(request, 'areas.html', contexto )
+    return render(request, 'areas.html', contexto)
+
 
 def cadastrar_areas(request):
     form = FormAreas(request.POST or None)
     if form.is_valid():
         form.save()
         messages.success(request, 'Área de cultivo cadastrada com sucesso!')
-    contexto = {'form':form}
+    contexto = {'form': form}
     return render(request, 'cadastrar_areas.html', contexto)
-
-def plantacoes(request):
-    return render(request, 'plantações.html')

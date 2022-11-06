@@ -30,20 +30,29 @@
 		{% endcomment %}
 	</div>
 	<div class="section2-main">
-		<input
-			class="input-main"
-			type="text"
-			placeholder="Insira seu Username"
-			name="username"
-		/>
-		<input
-			class="input-main"
-			type="password"
-			placeholder="Insira sua Senha"
-			name="password"
-		/>
-		<strong><p>Esqueci Minha Senha</p></strong>
-		<input class="btn-main" type="submit" value="Login" />
+		<form action="{%url 'login'%}" method="post"> {% csrf_token %}
+				{% if messages %}
+					{% for message in messages %}
+						<div class="alert {{message.tags}}">
+							{{message}}
+						</div>
+					{% endfor %}
+				{% endif %}
+			<input
+				class="input-main"
+				type="text"
+				placeholder="Insira seu Username"
+				name="username"
+			/>
+			<input
+				class="input-main"
+				type="password"
+				placeholder="Insira sua Senha"
+				name="password"
+			/>
+			<strong><p>Esqueci Minha Senha</p></strong>
+			<input class="btn-main" type="submit" value="Login" />
+		</form>
 	</div>
 </div>
 {%endblock%}
