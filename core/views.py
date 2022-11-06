@@ -72,6 +72,8 @@ def areas(request):
 
     return render(request, 'areas.html', contexto)
 
+def plantacoes(request):
+    return render(request, 'plantações.html')
 
 def cadastrar_areas(request):
     form = FormAreas(request.POST or None)
@@ -97,3 +99,4 @@ def cadastrar_plantacoes(request):
     contexto = {'form': form}
 
     return render(request, 'cadastrar_plantacoes.html', contexto)
+
