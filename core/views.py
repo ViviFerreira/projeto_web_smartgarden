@@ -36,3 +36,6 @@ def cadastrar_areas(request):
         messages.success(request, 'Área de cultivo cadastrada com sucesso!')
     contexto = {'form':form}
     return render(request, 'cadastrar_areas.html', contexto)
+
+def plantacoes(request):
+    return render(request, 'plantações.html')
