@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from datetime import datetime
 from django.utils.translation import gettext_lazy as _
 
 
@@ -13,7 +14,7 @@ class Categoria(models.Model):
 
 class AreaCultivo(models.Model):
     nome = models.CharField(max_length=100)
-    disponivel = models.BooleanField(blank=True, null=True, default=True)
+    disponivel = models.BooleanField(blank=True, null=False, default=True)
     apta = models.BooleanField(blank=False, null=False, default=True)
 
     def __str__(self):
@@ -24,11 +25,11 @@ class Plantacao(models.Model):
     descricao = models.CharField(max_length=100)
     qntDiasColheita = models.IntegerField
     qntPlantada = models.IntegerField
-    dtPlantio = models.DateTimeField(auto_now_add=True)
+    dtPlantio = models.DateTimeField(default=datetime.today)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     areacultivo = models.ForeignKey(
-        AreaCultivo, on_delete=models.CASCADE, null=True)
-    colhida = models.BooleanField(null=True)
+    AreaCultivo, on_delete=models.CASCADE, null=True)
+    colhida = models.BooleanField(null=False, default=False)
 
     def __str__(self):
         return self.descricao
@@ -45,5 +46,4 @@ class Irrigacao(models.Model):
     duracao = models.TimeField()
     concluida = models.BooleanField(blank=False, null=False, default=False)
     plantacao = models.ForeignKey(Plantacao, on_delete=models.CASCADE)
-    programacao = models.TextField(
-        choices=Irrigacao_Programacao.choices, max_length=20, null=True, default=0)
+    programacao = models.TextField(choices=Irrigacao_Programacao.choices, max_length=20, null=True, default=0)

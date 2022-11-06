@@ -30,10 +30,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 	const linkSidebar = document.querySelectorAll('.link_sidebar');
 
+	let link_active = '';
 	idLinkActive = getLinkActive();
-	const link_active = document.getElementById(idLinkActive);
 
-	link_active.classList.add('active');
+	if (idLinkActive) {
+		link_active = document.getElementById(idLinkActive);
+		link_active.classList.add('active');
+	}
+
 	linkSidebar.forEach(
 		(l) =>
 			(l.onclick = function () {

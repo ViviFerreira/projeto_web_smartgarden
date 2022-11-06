@@ -1,0 +1,26 @@
+{% extends 'layout.html' %} {% block content %} 
+{{ form.media }} {% load widget_tweaks%}
+
+<p class="title-page">Cadastrar Plantações</p>
+
+<section class="container_forms">
+	{% include 'partials/_alerts.html '%}
+	<form action="{% url 'cadastrar_plantacoes' %}" method="post">
+		{% csrf_token %} {% for field in form.visible_fields %}
+		<div class="form-group col-6 mb-3">
+			{% if field.label == 'Colhida' %}
+			<div class="form-check form-switch">
+				{{field|add_class:'form-check-input'}}
+				<label for="{{field.id_for_label}}">{{field.label}}</label>
+			</div>
+
+			{%else%}
+			<label for="{{field.id_for_label}}" class="mb-2">{{field.label}}</label>
+			{{field|add_class:'form-control'}} {% endif %}
+		</div>
+		{% endfor %}
+		<input type="submit" value="Cadastrar" class="btn btn_salvar" />
+	</form>
+</section>
+
+{% endblock %}

@@ -4,15 +4,15 @@ from django.db.models.aggregates import Count
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import FormAreas
+from .forms import FormAreas, FormPlantacoes
 from .models import *
 
 # Create your views here.
 
 
-def cad(request):
+def cadastrar_usuarios(request):
     if request.method == "GET":
-        return render(request, "cad.html")
+        return render(request, "cadastrar_usuarios.html")
     elif request.method == "POST":
         username = request.POST.get("username")
         email = request.POST.get("email")
@@ -24,7 +24,7 @@ def cad(request):
             user.save()
             return render(request, "home.html")
         except:
-            return render(request, "cad.html")
+            return render(request, "cadastrar_usuarios.html")
 
 
 def login(request):
@@ -86,3 +86,14 @@ def delete_areas(request, id):
     area = get_object_or_404(AreaCultivo, pk=id)
     area.delete()
     return redirect("areas")
+
+def cadastrar_plantacoes(request):
+    form = FormPlantacoes(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Sua plantação foi cadastrada com sucesso!')
+
+    contexto = {'form': form}
+
+    return render(request, 'cadastrar_plantacoes.html', contexto)
