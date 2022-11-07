@@ -9,11 +9,15 @@
 
 header {
 	grid-area: header;
+	width: 100%;
+	position: fixed;
+	z-index: 2;
 }
 
 main {
 	grid-area: main;
-	height: 100vh;
+	min-height: 100vh;
+	padding-bottom: 2rem;
 	position: relative;
 	transition: 0.5s;
 	padding-top: 1rem;
@@ -29,4 +33,7 @@ main {
 
 aside {
 	grid-area: aside;
+	position: fixed;
+	z-index: 1;
+	margin-top: 3.5rem;
 }
