@@ -82,9 +82,12 @@ body {
 	border-radius: 10px;
 	border: none;
 }
-.main .section2-main a{
+a{
 	text-decoration: none;
-	color: black;
 	display: flex;
 	margin-left: 10px;
+	color: black;
+	font-weight: bold;
 }
+
+
