@@ -27,11 +27,18 @@ body {
 	color: black;
 }
 .section2-header {
-	padding-top: 10px;
+	padding: 10px;
 	display: flex;
-	flex-direction: row;
 	gap: 50px;
 }
+
+.section2-header p{
+	margin: 0;
+	display: flex;
+	align-items: center;
+	font-weight: bold;
+}
+
 .btn-header {
 	background-color: var(--gray-dark);
 	color: var(--white-color);
