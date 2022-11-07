@@ -15,6 +15,5 @@ urlpatterns = [
     path('update_areas/<int:id>', views.update_areas, name='update_areas'),
     path('delete_areas/<int:id>', views.delete_areas, name='delete_areas'),
     path('plantacoes/', views.plantacoes, name='plantacoes'),
-    path('cadastrar_plantacoes/', views.cadastrar_plantacoes,
-         name='cadastrar_plantacoes'),
+    path('cadastrar_plantacoes/', views.cadastrar_plantacoes, name='cadastrar_plantacoes'),
 ]

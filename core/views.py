@@ -3,6 +3,7 @@ from django.contrib.messages import constants
 from django.db.models.aggregates import Count
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.db.models.signals import post_save
 
 from .forms import FormAreas, FormPlantacoes
 from .models import *
@@ -114,3 +115,11 @@ def cadastrar_plantacoes(request):
     contexto = {'form': form}
 
     return render(request, 'cadastrar_plantacoes.html', contexto)
+
+def atualizar_area(sender, instance, created, **kwargs): 
+    if created:
+        AreaCultivo.objects.filter(nome=instance.areacultivo).update(disponivel=False)
+      
+post_save.connect(atualizar_area, sender=Plantacao)
+
+

@@ -27,8 +27,7 @@ class Plantacao(models.Model):
     qntPlantada = models.IntegerField
     dtPlantio = models.DateTimeField(default=datetime.today)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    areacultivo = models.ForeignKey(
-    AreaCultivo, on_delete=models.CASCADE, null=True)
+    areacultivo = models.ForeignKey(AreaCultivo, on_delete=models.CASCADE, null=True)
     colhida = models.BooleanField(null=False, default=False)
 
     def __str__(self):
