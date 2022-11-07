@@ -6,14 +6,25 @@ body {
 	height: 10vh;
 	width: 100%;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 }
-.section-header {
+
+.logo{
+	display: flex;
+	align-items: initial;
+	margin-left: 10px;
+	width:89px; 
+	height: 38px;
+}
+
+.header .section-header {
 	padding-top: 10px;
 	display: flex;
 	flex-direction: row;
 	gap: 50px;
+	text-decoration:none;
+	color: black;
 }
 .section2-header {
 	padding-top: 10px;
