@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'css/header.css' %}" />
 {% endblock header %} {%block body%}
 <div class="header">
-	<img  class="logo" src="{%static 'img/LOGO.png'%}"/>
+	<img class="logo" src="{%static 'img/LOGO.png'%}" />
 	<div class="section-header">
 		<a href="#"><p>Home</p></a>
 		<a href="#"><p>Sobre</p></a>
@@ -20,7 +20,7 @@
 		{% comment %}
 		<div class="section1-main">
 			{% endcomment %}
-			<h2 class="smg">Smart Garden</h2>
+			<h2 class="smg">Smart <span>Garden</span></h2>
 			<h6 class="smg">
 				<p>A melhor opção em cuidado com o seu <br />jardim!</p>
 			</h6>
@@ -30,17 +30,13 @@
 		{% endcomment %}
 	</div>
 	<div class="section2-main">
-		<form action="{%url 'login'%}" method="post"> {% csrf_token %}
-				{% if messages %}
-					{% for message in messages %}
-						<div class="alert {{message.tags}}">
-							{{message}}
-						</div>
-					{% endfor %}
-				{% endif %}
+		<form action="{%url 'login'%}" method="post">
+			{% csrf_token %} {% if messages %} {% for message in messages %}
+			<div class="alert {{message.tags}}">{{message}}</div>
+			{% endfor %} {% endif %}
 			<input
 				class="input-main"
-				type="email"
+				type="text"
 				placeholder="Insira seu Username"
 				name="username"
 			/>

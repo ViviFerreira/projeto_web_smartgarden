@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
 
 * {
 	margin: 0;
@@ -15,6 +16,7 @@
 	--light-color: #eeeeee;
 	--body-font: 'Inter', sans-serif;
 	--title-font: 'Roboto' sans-serif;
+	--font-name: 'Raleway', sans-serif;
 	--normal-font-size: 1rem;
 	--z-fixed: 100;
 }

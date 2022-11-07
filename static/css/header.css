@@ -10,11 +10,11 @@ body {
 	align-items: center;
 }
 
-.logo{
+.logo {
 	display: flex;
 	align-items: initial;
 	margin-left: 10px;
-	width:89px; 
+	width: 89px;
 	height: 38px;
 }
 
@@ -23,7 +23,7 @@ body {
 	display: flex;
 	flex-direction: row;
 	gap: 50px;
-	text-decoration:none;
+	text-decoration: none;
 	color: black;
 }
 .section2-header {
@@ -32,7 +32,7 @@ body {
 	gap: 50px;
 }
 
-.section2-header p{
+.section2-header p {
 	margin: 0;
 	display: flex;
 	align-items: center;
@@ -51,12 +51,11 @@ body {
 	justify-content: space-evenly;
 	display: flex;
 	height: 90vh;
+	padding: 30px;
 	flex-direction: row;
 }
 .section1-main {
-
 	width: 70%;
-	padding: 30px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
@@ -65,7 +64,7 @@ body {
 .main .section2-main {
 	width: 30%;
 	display: flex;
-	align-items:center;
+	align-items: center;
 
 	justify-content: center;
 	gap: 15px;
@@ -78,8 +77,24 @@ body {
 	margin: 5px;
 	padding-left: 10px;
 }
-.smg {
+h2.smg {
 	color: var(--white-color);
+	font-size: 2.5rem;
+	font-weight: bolder;
+	font-family: var(--font-name);
+}
+h2.smg span {
+	color: var(--gray-dark);
+}
+
+h6.smg {
+	color: var(--white-color);
+	font-size: 1.3rem;
+	font-weight: 100;
+	font-family: var(--font-name);
+}
+
+h6.smg {
 }
 .btn-main {
 	background-color: var(--gray-dark);
@@ -89,12 +104,10 @@ body {
 	border-radius: 10px;
 	border: none;
 }
-a{
-	text-decoration: none;
+a {
+	text-decoration: none !important;
 	display: flex;
 	margin-left: 10px;
-	color: black;
+	color: black !important;
 	font-weight: bold;
 }
-
-
