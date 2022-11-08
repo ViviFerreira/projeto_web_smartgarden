@@ -10,7 +10,7 @@ a {
 }
 
 .l-navbar {
-	position: absolute;
+	position: fixed;
 	top: 5;
 	left: -30%;
 	width: var(--nav-width);
