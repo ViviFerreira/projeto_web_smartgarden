@@ -1,31 +1,30 @@
 {% extends 'layout.html' %} {% load static %} {% block content %}
+
 <div>
     <div class="d-flex align-items-center justify-content-between mb-3">
-		<p class="title-page">Plantações</p>
-		<a href="{% url 'cadastrar_plantacoes' %}"><button type="button" class="btn btn_salvar">Adicionar</button></a>
+		<p class="title-page">irrigações</p>
+		<a href="#"><button type="button" class="btn btn_salvar">Adicionar</button></a>
 	</div>
   <table class="table table-striped table-hover mt-5">
         <thead class="border-botton border-secondary">
             <tr class>
-                <th scope="col">Nome</th>
-                <th scope="col">Categoria</th>
-                <th scope="col">Dias</th>
-                <th scope="col">Qntd plantanda</th>
+                <th scope="col">Plantação</th>
+                <th scope="col">Programação</th>
+                <th scope="col">Ult. irrigação</th>
+                <th scope="col">Próx. irrigação</th>
                 <th scope="col"></i>Colhido</th>
                 <th scope="col"></i>Ação</th>
             </tr>
         </thead>
         <tbody>
-            {% for plantacao in plantacoes %}
             <tr>
-                <td>{{plantacao.descricao}}</td>
-                <td>{{plantacao.categoria}}</td>
-                <td>{{plantacao.dtPlantio}}</td>
+                <td>Alface americano</td>
+                <td>Todo dia às 10h</td>
+                <td>08/11/22</td>
                 <td>500</td>
                 <td><a href="#"><i class="fa-solid fa-square-check fa-1x d-flex mt-1 ms-4 text-success" style="font-size: 1.4em;"></i></a></td>
                 <td><a href="#" class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a href="#" ><i class="fa-sharp fa-solid fa-trash text-black"></i></a></td>
             </tr>
-            {% endfor %}
         </tbody>
     </table>
     <div class="container_pagination">
@@ -48,4 +47,5 @@
         </nav>
     </div>
 </div>
-  {% endblock %}
+
+{% endblock %}

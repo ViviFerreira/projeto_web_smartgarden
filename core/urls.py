@@ -1,5 +1,3 @@
-from unicodedata import name
-
 from django.urls import path
 
 from . import views
@@ -15,4 +13,5 @@ urlpatterns = [
     path('delete_areas/<int:id>', views.delete_areas, name='delete_areas'),
     path('plantacoes/', views.plantacoes, name='plantacoes'),
     path('cadastrar_plantacoes/', views.cadastrar_plantacoes, name='cadastrar_plantacoes'),
+    path('irrigacoes/' ,views.irrigacoes, name='irrigacoes'),
 ]
