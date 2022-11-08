@@ -102,7 +102,15 @@ def delete_areas(request, id):
 
 
 def plantacoes(request):
-    return render(request, 'plantações.html')
+    plantacoes = Plantacao.objects.all()
+    contexto = {
+        'plantacoes': plantacoes
+    }   
+    return render(request, 'plantações.html', contexto)
+
+
+def irrigacoes(request):
+    return render(request, 'irrigações.html')
 
 
 def cadastrar_plantacoes(request):

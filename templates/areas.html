@@ -65,7 +65,7 @@
 					{% else %}
 					<td>Inapta</td>
 					{% endif %}
-					<td><a href='{% url 'update_areas' area.id%}' class="m-2"><i class="fa-solid fa-pencil"></i></a><a href='{% url 'delete_areas' area.id %}'><i class="fa-sharp fa-solid fa-trash"></i></a></td>
+					<td><a href='{% url 'update_areas' area.id%}' class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a href='{% url 'delete_areas' area.id %}'><i class="fa-sharp fa-solid fa-trash text-black"></i></a></td>
 				</tr>
 				{% endfor %}
 			</tbody>
@@ -91,5 +91,18 @@
 			</ul>
 		</nav>
 	</div>
+	<div class="modal" tabindex="-1">
+		<div class="modal-dialog">	
+		  <div class="modal-content">
+			<div class="modal-body">
+			  <p>Você tem certeza que deseja excluir está área?</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary">Save changes</button>
+				<button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
 </div>
 {% endblock %}
