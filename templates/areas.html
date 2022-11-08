@@ -1,7 +1,7 @@
 {% extends 'layout.html' %} {% load static %} {% block content %}
 <div>
 	<div class="d-flex align-items-center justify-content-between mb-3">
-		<p class="title-page">Áreas de Cultivo</p>
+		<p class="title-page">Áreas de Cultivo, Bem Vindo {{user}}</p>
 		<a href="{% url 'cadastrar_areas' %}"><button type="button" class="btn btn_salvar">Adicionar</button></a>
 	</div>
 	
@@ -65,7 +65,7 @@
 					{% else %}
 					<td>Inapta</td>
 					{% endif %}
-					<td><a href='{% url 'update_areas' area.id%}' class="m-2"><i class="fa-solid fa-pencil"></i></a><a href='#'><i class="fa-sharp fa-solid fa-trash"></i></a></td>
+					<td><a href='{% url 'update_areas' area.id%}' class="m-2"><i class="fa-solid fa-pencil"></i></a><a href='{% url 'delete_areas' area.id %}'><i class="fa-sharp fa-solid fa-trash"></i></a></td>
 				</tr>
 				{% endfor %}
 			</tbody>
