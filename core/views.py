@@ -130,4 +130,5 @@ def atualizar_area(sender, instance, created, **kwargs):
       
 post_save.connect(atualizar_area, sender=Plantacao)
 
-
+def editarAreas(request):
+    return render(request, 'editar_areas.html')

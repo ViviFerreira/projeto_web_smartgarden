@@ -29,3 +29,22 @@ a { color: inherit; }
 	display: flex;
 	justify-content: center;
 }
+
+/* botões do modal */
+
+#exampleModal{
+	width: 100%;
+}
+
+
+#confirmar:hover{
+	background-color: var(--green-primary);
+	color: var(--light-color);
+
+}
+
+#cancelar:hover{
+	background-color: var(--gray-dark);
+	color: var(--light-color);
+	
+}
