@@ -59,7 +59,7 @@ a {
 .nav_name {
 	font-size: 1rem;
 }
-.show {
+.show_sidebar {
 	left: 0;
 }
 
@@ -99,7 +99,7 @@ a {
 		padding: 1rem 1rem 0 0;
 	}
 
-	.show {
+	.show_sidebar {
 		width: calc(var(--nav-width) + 156px);
 	}
 

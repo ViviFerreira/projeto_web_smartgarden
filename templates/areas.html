@@ -65,7 +65,13 @@
 					{% else %}
 					<td>Inapta</td>
 					{% endif %}
-					<td><a href='{% url 'update_areas' area.id%}' class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a href='{% url 'delete_areas' area.id %}'><i class="fa-sharp fa-solid fa-trash text-black" data-toggle="modal fade" data-target="#exampleModal"></i></a></td>
+					<td>
+						<a href='{% url 'update_areas' area.id%}' class="m-1">
+							<i class="fa-solid fa-pencil text-black"></i></a>
+						<a data-toggle="modal" data-target="#modal_confirm" href='{% url 'delete_areas' area.id %}'>
+							<i class="fa-sharp fa-solid fa-trash text-black" data-toggle="modal fade" data-target="#exampleModal"></i>
+						</a>
+					</td>
 				</tr>
 				{% endfor %}
 			</tbody>
@@ -91,14 +97,9 @@
 			</ul>
 		</nav>
 	</div>
-
-<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-		Launch demo modal
-	</button>
 	
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="modal_confirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
