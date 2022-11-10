@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 		if (toggle && nav && sectionpd) {
 			toggle.addEventListener('click', () => {
 				// show navbar
-				nav.classList.toggle('show');
+				nav.classList.toggle('show_sidebar');
 				// change icon
 				toggle.classList.toggle('bx-x');
 				// add padding to section
