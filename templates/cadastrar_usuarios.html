@@ -1,26 +1,32 @@
+{% extends 'home.html' %} 
 
-{%load static%}
+{% load static %} 
+
+{% block content %}
+
 {% block header %}
-
+<link rel="stylesheet" href="{% static 'css/header.css' %}" />
 {%endblock header %}
 
 {% block body%}
-
-<br>
-    <div class="container1">
-        <form action="{%url 'cadastrar_usuarios'%}" method="POST">{% csrf_token %}
-            <label>Nome</label>
-            <br>
-            <input placeholder="Digite seu Username" type="text" name="username" class="form-control">
-            <br>
-            <label>Email</label>
-            <br>
-            <input placeholder="Digite seu Email" type="email" name="email" class="form-control">
-            <br>
-            <label>Senha</label>
-            <input placeholder="Digite sua senha" type="password" name="senha" class="form-control">
-            <br>
-            <button type="submit" class="btn btn-dark medio">Cadastrar Usuário</button>
-        </form>
+<div class="header">
+	<img class="logo" src="{%static 'img/LOGO.png'%}" />
+	<div class="section-header">
+		<a href="#"><p>Home</p></a>
+		<a href="#"><p>Sobre</p></a>
+		<a href="#"><p>Contato</p></a>
+		<a href="#"><p>Ajuda</p></a>
+	</div>
+	<div class="section2-header">
+		<p>Login</p>
     </div>
+    <div>
+        {% include 'partials/_login.html' %}
+    </div>
+
+</div>
+
 {%endblock body%}
+
+{%endblock%}
+

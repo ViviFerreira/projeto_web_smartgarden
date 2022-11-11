@@ -1,7 +1,12 @@
-{% extends 'base.html' %} {%load static%} {% block header %}
+{% extends 'base.html' %}
 
+{%load static%} 
+
+{% block header %}
 <link rel="stylesheet" href="{% static 'css/header.css' %}" />
-{% endblock header %} {%block body%}
+{% endblock header %}
+ 
+{%block body%}
 <div class="header">
 	<img class="logo" src="{%static 'img/LOGO.png'%}" />
 	<div class="section-header">

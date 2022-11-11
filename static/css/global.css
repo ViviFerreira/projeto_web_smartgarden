@@ -40,3 +40,10 @@ body {
 	font-weight: 700;
 	font-size: 1.1rem;
 }
+
+.container_pagination{
+	margin-top: 340px;
+	display:flex; 
+	justify-content: space-around;
+}
+

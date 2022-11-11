@@ -18,7 +18,7 @@ a {
 	background-color: var(--gray-dark);
 	padding: 0.5rem 1rem 0 0;
 	transition: 0.5s;
-	z-index: var(--z-fixed);
+	z-index: 1;
 }
 
 .nav {

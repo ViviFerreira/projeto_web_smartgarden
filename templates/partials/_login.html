@@ -1,0 +1,13 @@
+{% load static%}
+
+<div class="container1">
+    <form action="{%url 'cadastrar_usuarios'%}" method="POST">{% csrf_token %}
+        <label>Nome</label>
+        <input placeholder="Digite seu Username" type="text" name="username" class="form-control">
+        <label>Email</label>
+        <input placeholder="Digite seu Email" type="email" name="email" class="form-control">
+        <label>Senha</label>
+        <input placeholder="Digite sua senha" type="password" name="senha" class="form-control">
+        <button type="submit" class="btn btn-dark medio">Cadastrar Usuário</button>
+    </form>
+</div>
