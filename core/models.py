@@ -23,8 +23,8 @@ class AreaCultivo(models.Model):
 
 class Plantacao(models.Model):
     descricao = models.CharField(max_length=100)
-    qntDiasColheita = models.IntegerField()
-    qntPlantada = models.IntegerField()
+    qntDiasColheita = models.IntegerField(null=True)
+    qntPlantada = models.IntegerField(null=True)
     dtPlantio = models.DateTimeField(default=datetime.today)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     areacultivo = models.ForeignKey(AreaCultivo, on_delete=models.CASCADE, null=True)
