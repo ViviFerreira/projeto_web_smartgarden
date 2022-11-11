@@ -68,7 +68,7 @@
 					<td>
 						<a href='{% url 'update_areas' area.id%}' class="m-1">
 							<i class="fa-solid fa-pencil text-black"></i></a>
-						<a data-toggle="modal" data-target="#modal_confirm" href='{% url 'delete_areas' area.id %}'>
+						<a data-toggle="modal" data-target="#modal_confirm" >
 							<i class="fa-sharp fa-solid fa-trash text-black" data-toggle="modal fade" data-target="#exampleModal"></i>
 						</a>
 					</td>
@@ -110,7 +110,9 @@
 			</div>
 			<div class="modal-footer">
 			<button type="button" id="cancelar"class="btn" data-dismiss="modal">Cancelar</button>
+			
 			<button type="button" id="confirmar"class="btn">Confirmar</button>
+			
 			</div>
 		</div>
 		</div>
