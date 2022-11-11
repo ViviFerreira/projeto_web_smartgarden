@@ -6,19 +6,52 @@
 <section class="container_forms">
 	{% include 'partials/_alerts.html '%}
 	<form action="{% url 'cadastrar_plantacoes' %}" method="post">
-		{% csrf_token %} {% for field in form.visible_fields %}
-		<div class="form-group col-6 mb-3">
-			{% if field.label == 'Colhida' %}
-			<div class="form-check form-switch">
-				{{field|add_class:'form-check-input'}}
-				<label for="{{field.id_for_label}}">{{field.label}}</label>
+		{% csrf_token %} 
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-group">
+				<label>Descricão</label>
+					{% render_field form.descricao class+="form-control" %}
+				</div>
 			</div>
-
-			{%else%}
-			<label for="{{field.id_for_label}}" class="mb-2">{{field.label}}</label>
-			{{field|add_class:'form-control'}} {% endif %}
+			<div class="col">
+				<div class="form-group">
+					<label>Área de Cultivo</label>
+					{% render_field form.areacultivo class+="form-control" %}
+				</div>
+			</div>
 		</div>
-		{% endfor %}
+
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-group">
+				<label>Categoria</label>
+					{% render_field form.categoria class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Dias até a colheita</label>
+					{% render_field form.qntDiasColheita class+="form-control" %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-group">
+				<label>Data do Plantio</label>
+					{% render_field form.dtPlantio class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Quantidade Plantada</label>
+					{% render_field form.qntPlantada class+="form-control" %}
+				</div>
+			</div>
+		</div>
+
 		<input type="submit" value="Cadastrar" class="btn btn_salvar" />
 	</form>
 </section>
