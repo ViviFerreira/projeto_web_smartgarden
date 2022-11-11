@@ -16,11 +16,6 @@ class FormPlantacoes(forms.ModelForm):
     class Meta:
         model = Plantacao
         fields = '__all__'
-        labels = {
-            'descricao': 'Descrição',
-            'areacultivo':'Área de Cultivo',
-            'dtPlantio': 'Data do Plantio'
-        }
         widgets = {
             'dtPlantio':  DatePicker(),
         }
