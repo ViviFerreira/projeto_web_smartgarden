@@ -1,9 +1,9 @@
 from django.contrib import auth, messages
 from django.contrib.messages import constants
 from django.db.models.aggregates import Count
+from django.db.models.signals import post_save
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from django.db.models.signals import post_save
 
 from .forms import FormAreas, FormPlantacoes
 from .models import *
@@ -108,10 +108,15 @@ def plantacoes(request):
     }   
     return render(request, 'plantações.html', contexto)
 
-
-def irrigacoes(request):
-    return render(request, 'irrigações.html')
-
+def update_plantacoes(request,id):
+    plantacoes = Plantacao.objects.get(id=id)
+    form = FormPlantacoes(instance=plantacoes)
+    if request.method == 'POST':
+        form = FormPlantacoes(request.POST, instance=plantacoes)
+        if form.is_valid():
+            form.save()
+            return redirect('plantacoes')
+    return render(request, 'update_plantacoes.html', {'formplant': form})
 
 def cadastrar_plantacoes(request):
     form = FormPlantacoes(request.POST or None)
@@ -124,11 +129,14 @@ def cadastrar_plantacoes(request):
 
     return render(request, 'cadastrar_plantacoes.html', contexto)
 
+def irrigacoes(request):
+    return render(request, 'irrigações.html')
+
+
 def atualizar_area(sender, instance, created, **kwargs): 
     if created:
         AreaCultivo.objects.filter(nome=instance.areacultivo).update(disponivel=False)
       
 post_save.connect(atualizar_area, sender=Plantacao)
 
-def editarAreas(request):
-    return render(request, 'editar_areas.html')
+
