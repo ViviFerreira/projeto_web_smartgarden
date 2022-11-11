@@ -42,8 +42,9 @@ body {
 }
 
 .container_pagination{
-	margin-top: 340px;
-	display:flex; 
+	margin-top: 15%;
+	display:flex;
+	position:relative; 
 	justify-content: space-around;
 }
 
