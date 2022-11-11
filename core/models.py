@@ -13,7 +13,7 @@ class Categoria(models.Model):
 
 
 class AreaCultivo(models.Model):
-    nome = models.CharField(max_length=100)
+    nome = models.CharField(max_length=100, unique=True)
     disponivel = models.BooleanField(blank=True, null=False, default=True)
     apta = models.BooleanField(blank=False, null=False, default=True)
 
@@ -23,8 +23,8 @@ class AreaCultivo(models.Model):
 
 class Plantacao(models.Model):
     descricao = models.CharField(max_length=100)
-    qntDiasColheita = models.IntegerField
-    qntPlantada = models.IntegerField
+    qntDiasColheita = models.IntegerField()
+    qntPlantada = models.IntegerField()
     dtPlantio = models.DateTimeField(default=datetime.today)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     areacultivo = models.ForeignKey(AreaCultivo, on_delete=models.CASCADE, null=True)
