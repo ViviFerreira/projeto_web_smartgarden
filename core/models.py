@@ -13,7 +13,7 @@ class Categoria(models.Model):
 
 
 class AreaCultivo(models.Model):
-    nome = models.CharField(max_length=100, unique=True)
+    nome = models.CharField(max_length=100)
     disponivel = models.BooleanField(blank=True, null=False, default=True)
     apta = models.BooleanField(blank=False, null=False, default=True)
 
@@ -37,12 +37,29 @@ class Plantacao(models.Model):
 class Irrigacao_Programacao(models.TextChoices):
     NAO_REPETE = 'NAO_REPETE', _('Não se repete')
     TODOS_DIAS = 'TODOS_DIAS', _('Todos os dias')
-    PERSONALIZAR = 'PERSONALIZAR', _('Personalizar...')
 
+class Tipos_Tarefa(models.TextChoices):
+    PLANTACAO = 'PLANTACAO', _('Em uma plantação')
+    AREA = 'AREA', _('Em uma área')
+    LIVRE = 'LIVRE', _('Livre')
 
 class Irrigacao(models.Model):
-    horario = models.DateTimeField()
+    dtUltIrrigacao = models.DateField(null=True, blank=True)
+    dtProxIrrigacao = models.DateField(default=datetime.today, null=True, blank=True)
+    horario = models.TimeField()
     duracao = models.TimeField()
     concluida = models.BooleanField(blank=False, null=False, default=False)
     plantacao = models.ForeignKey(Plantacao, on_delete=models.CASCADE)
     programacao = models.TextField(choices=Irrigacao_Programacao.choices, max_length=20, null=True, default=0)
+
+
+class Tarefa(models.Model):
+    descricao = models.CharField(max_length=100)
+    data = models.DateField(default=datetime.today)
+    tipoTarefa = models.TextField(choices=Tipos_Tarefa.choices, max_length=20, null=True, default=0)
+    areacultivo = models.ForeignKey(AreaCultivo, on_delete=models.CASCADE, null=True, blank=True)
+    plantacao = models.ForeignKey(Plantacao, on_delete=models.CASCADE, null=True, blank=True)
+    concluida = models.BooleanField(blank=False, null=False, default=False)
+
+    def __str__(self):
+        return self.descricao
