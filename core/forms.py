@@ -1,7 +1,10 @@
-from django import forms
 from datetime import datetime
-from tempus_dominus.widgets import DatePicker,TimePicker
+
+from django import forms
+from tempus_dominus.widgets import DatePicker, TimePicker
+
 from .models import *
+
 
 class FormAreas(forms.ModelForm):
 

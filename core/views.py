@@ -24,7 +24,7 @@ def cadastrar_usuarios(request):
                 username=username, email=email, password=senha
             )
             user.save()
-            return render(request, "home.html")
+            return render(request, "login_usuario.html")
         except:
             return render(request, "cadastrar_usuarios.html")
 
@@ -132,7 +132,7 @@ def cadastrar_plantacoes(request):
         messages.success(request, 'Sua plantação foi cadastrada com sucesso!')
 
     contexto = {'form': form}
-
+    
     return render(request, 'cadastrar_plantacoes.html', contexto)
 
 def delete_plantacoes(request, id):
