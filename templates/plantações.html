@@ -23,7 +23,7 @@
                 <td>{{plantacao.dtPlantio}}</td>
                 <td>500</td>
                 <td><a href="#"><i class="fa-solid fa-square-check fa-1x d-flex mt-1 ms-4 text-success" style="font-size: 1.4em;"></i></a></td>
-                <td><a href="{% url 'update_plantacoes' plantacao.id %}" class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a href="#" ><i class="fa-sharp fa-solid fa-trash text-black"></i></a></td>
+                <td><a href="{% url 'update_plantacoes' plantacao.id %}" class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a href="{% url 'delete_plantacoes' plantacao.id %}" ><i class="fa-sharp fa-solid fa-trash text-black"></i></a></td>
             </tr>
             {% endfor %}
         </tbody>

@@ -1,5 +1,6 @@
 from django.contrib import auth, messages
 from django.contrib.messages import constants
+from django.core.paginator import Paginator
 from django.db.models.aggregates import Count
 from django.db.models.signals import post_save
 from django.http import HttpResponse
@@ -63,6 +64,10 @@ def areas(request):
     qntApta = AreaCultivo.objects.filter(apta=True).count()
     qntInapta = AreaCultivo.objects.filter(apta=False).count()
 
+    paginator = Paginator(areas, 3)
+    page = request.GET.get('page')
+    areas = paginator.get_page(page)
+
     contexto = {
         'areas': areas,
         'qntDisponivel': qntDisponivel,
@@ -79,6 +84,7 @@ def cadastrar_areas(request):
     if form.is_valid():
         form.save()
         messages.success(request, 'Área de cultivo cadastrada com sucesso!')
+        return redirect('cadastrar_areas')
     contexto = {'form': form}
     return render(request, 'cadastrar_areas.html', contexto)
 
@@ -128,6 +134,11 @@ def cadastrar_plantacoes(request):
     contexto = {'form': form}
 
     return render(request, 'cadastrar_plantacoes.html', contexto)
+
+def delete_plantacoes(request, id):
+    plantacoes = get_object_or_404(Plantacao, pk=id)
+    plantacoes.delete()
+    return redirect("plantacoes")
 
 def irrigacoes(request):
     return render(request, 'irrigações.html')
