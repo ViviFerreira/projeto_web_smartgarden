@@ -22,38 +22,14 @@
 </div>
 <div class="main">
 	<div class="section1-main">
-		{% comment %}
-		<div class="section1-main">
-			{% endcomment %}
-			<h2 class="smg">Smart <span>Garden</span></h2>
-			<h6 class="smg">
-				<p>A melhor opção em cuidado com o seu <br />jardim!</p>
-			</h6>
-			<img src="{%static 'img/sammy-line-20 1.svg'%}" width="350" height="350" />
-			{% comment %}
-		</div>
-		{% endcomment %}
+		<h2 class="smg">Smart <span>Garden</span></h2>
+		<h6 class="smg">
+			<p>A melhor opção em cuidado com o seu <br />jardim!</p>
+		</h6>
+		<img src="{%static 'img/sammy-line-20 1.svg'%}" width="350" height="350" />
 	</div>
-	<div class="section2-main">
-		<form action="{%url 'login'%}" method="post">
-			{% csrf_token %} {% if messages %} {% for message in messages %}
-			<div class="alert {{message.tags}}">{{message}}</div>
-			{% endfor %} {% endif %}
-			<input
-				class="input-main"
-				type="text"
-				placeholder="Insira seu Username"
-				name="username"
-			/>
-			<input
-				class="input-main"
-				type="password"
-				placeholder="Insira sua Senha"
-				name="password"
-			/>
-			<a href="#"><p>Esqueci Minha Senha</p></a>
-			<input class="btn-main" type="submit" value="Login" />
-		</form>
-	</div>
+	{% block content %}
+	
+	{% endblock%}
 </div>
 {%endblock%}

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %} {% block content %} {% load widget_tweaks%}
 
 <p class="title-page">Cadastrar Áreas</p>
-<p />
+
 
 <section class="container_forms">
 	{% include 'partials/_alerts.html '%}
@@ -19,7 +19,7 @@
 			{{field|add_class:'form-control'}} {% endif %}
 		</div>
 		{% endfor %}
-		<input type="submit" value="Cadastrar" class="btn btn_salvar" />
+		<input type="submit" value="salvar" class="btn btn_salvar " />
 	</form>
 </section>
 

@@ -30,7 +30,7 @@ def cadastrar_usuarios(request):
 
 def login(request):
     if request.method == "GET":
-        return render(request, "home.html")
+        return render(request, "login_usuario.html")
     elif request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
