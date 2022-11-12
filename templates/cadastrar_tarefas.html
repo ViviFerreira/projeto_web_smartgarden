@@ -1,0 +1,50 @@
+{% extends 'layout.html' %} {% block content %} 
+{{ form.media }} {% load widget_tweaks%}
+
+<p class="title-page">Cadastrar Tarefas</p>
+
+<section class="container_forms">
+	{% include 'partials/_alerts.html '%}
+	<form action="{% url 'cadastrar_tarefas' %}" method="post">
+		{% csrf_token %} 
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-group">
+				<label>Descrição da tarefa</label>
+					{% render_field form.descricao class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Data da Tarefa</label>
+					{% render_field form.data class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Realizar tarefa em</label>
+					{% render_field form.tipoTarefa class+="form-control" %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-group">
+				<label>Área de cultivo</label>
+					{% render_field form.areacultivo class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Plantação</label>
+					{% render_field form.plantacao class+="form-control" %}
+				</div>
+			</div>
+		</div>
+
+		<input type="submit" value="Cadastrar" class="btn btn_salvar" />
+	</form>
+</section>
+
+{% endblock %}

@@ -5,7 +5,7 @@ from django.db.models.signals import post_save
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import FormAreas, FormPlantacoes
+from .forms import *
 from .models import *
 
 # Create your views here.
@@ -130,7 +130,40 @@ def cadastrar_plantacoes(request):
     return render(request, 'cadastrar_plantacoes.html', contexto)
 
 def irrigacoes(request):
-    return render(request, 'irrigações.html')
+    irrigacoes = Irrigacao.objects.all()
+    contexto = {
+        'irrigacoes': irrigacoes
+    }   
+    return render(request, 'irrigacoes.html', contexto)
+
+
+def cadastrar_tarefas(request):
+    form = FormTarefas(request.POST or None)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Sua tarefa cadastrada com sucesso!')
+    contexto = {'form': form}
+    return render(request, 'cadastrar_tarefas.html', contexto)
+
+def tarefas(request):
+    tarefas = Tarefa.objects.all()
+    contexto = {
+        'tarefas': tarefas
+    }   
+    return render(request, 'tarefas.html', contexto)
+
+def cadastrar_irrigacoes(request):
+    form = FormIrrigacoes(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'A irrigação foi cadastrada com sucesso!')
+    else:
+        print(form)
+
+    contexto = {'form': form}
+
+    return render(request, 'cadastrar_irrigacoes.html', contexto)
 
 
 def atualizar_area(sender, instance, created, **kwargs): 
