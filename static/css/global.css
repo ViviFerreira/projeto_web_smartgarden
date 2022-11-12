@@ -40,3 +40,19 @@ body {
 	font-weight: 700;
 	font-size: 1.1rem;
 }
+
+.container_pagination{
+	margin-top: 15%;
+	display:flex;
+	position:relative; 
+	justify-content: space-around;
+}
+
+/* check box */
+
+.form-check input{
+	width: 20px;
+	height: 20px;
+	bottom: 2px;
+}
+

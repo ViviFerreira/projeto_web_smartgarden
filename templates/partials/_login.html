@@ -1,0 +1,23 @@
+{% load static %}
+
+<div class="section2-main">
+    <form action="{%url 'login'%}" method="post">
+        {% csrf_token %} {% if messages %} {% for message in messages %}
+        <div class="alert {{message.tags}}">{{message}}</div>
+        {% endfor %} {% endif %}
+        <input
+            class="input-main"
+            type="text"
+            placeholder="Insira seu Username"
+            name="username"
+        />
+        <input
+            class="input-main"
+            type="password"
+            placeholder="Insira sua Senha"
+            name="password"
+        />
+        <a href="#"><p>Esqueci Minha Senha</p></a>
+        <input class="btn-main ml-1" type="submit" value="Login" />
+    </form>
+</div>

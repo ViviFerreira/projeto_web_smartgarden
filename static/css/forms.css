@@ -6,10 +6,12 @@
 	background-color: var(--white-color);
 }
 
-.btn_salvar,
+.btn_salvar, 
 .btn_salvar:hover {
 	background-color: var(--green-secondary) !important;
 	color: var(--white-color) !important;
 	float: right;
 	margin-left: 0.5rem;
 }
+
+

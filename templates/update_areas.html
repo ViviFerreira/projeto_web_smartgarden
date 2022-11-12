@@ -1,4 +1,25 @@
-<form action="" method="post">{% csrf_token %}
-    {{formareas}}
-    <input type="submit" value="enviar">
-</form>
+{% extends 'layout.html' %} {% load static %} {% block content %}{% load widget_tweaks%}
+
+<p class="title-page">Editar Áreas</p>
+
+<section class="container_forms">
+    <form action="" method="post">{% csrf_token %}
+        {% csrf_token %} {% for field in formareas.visible_fields %}
+        <div class="form-group col-6 mb-3">
+            {% if field.label == 'Disponivel' or field.label == 'Apta' %}
+            <div class="form-check form-switch">
+                {{field|add_class:'form-check-input'}}
+                <label for="{{field.id_for_label}}">{{field.label}}</label>
+            </div>
+
+            {%else%}
+            <label for="{{field.id_for_label}}" class="mb-2">{{field.label}}</label>
+            {{field|add_class:'form-control'}} {% endif %}
+        </div>
+        {% endfor %}
+        
+        <input type="submit" value="Cadastrar" class="btn btn_salvar" />
+    </form>
+</section>
+{% endblock%}
+

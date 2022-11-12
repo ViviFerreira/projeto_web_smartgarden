@@ -1,0 +1,13 @@
+{% load static%}
+
+<div class="section2-main">
+    <form action="{%url 'cadastrar_usuarios'%}" method="POST">
+        {% csrf_token %} {% if messages %} {% for message in messages %}
+        <div class="alert {{message.tags}}">{{message}}</div>
+        {% endfor %} {% endif %}
+        <input placeholder="Insira seu usuario" type="text" name="username" class="input-main">
+        <input placeholder="Insira seu email" type="email" name="email" class="input-main">
+        <input placeholder="Insira sua Senha" type="password" name="senha" class="input-main">
+        <input class="btn-main ml-1 mt-3" type="submit" value="Cadastrar Usuário" />
+    </form>
+</div>
