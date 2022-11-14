@@ -27,7 +27,11 @@
                 <td>{{irrigacao.dtProxIrrigacao}}</td> 
                 <td>{{irrigacao.horario}}</td> 
                 <td>{{irrigacao.duracao}}</td> 
-                <td><a href="#"><i class="fa-solid fa-square-check fa-1x d-flex mt-1 ms-4 text-success" style="font-size: 1.4em;"></i></a></td>
+                <td><a href="#">
+                    <div class="form-check" >
+                        <input class="" type="checkbox" value="" id="flexCheckDefault">
+                      </div>
+                </a></td>
                 <td><a href="{% url 'update_plantacoes' irrigacao.id %}" class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a href="#" ><i class="fa-sharp fa-solid fa-trash text-black"></i></a></td>
             </tr>
             {% endfor %}

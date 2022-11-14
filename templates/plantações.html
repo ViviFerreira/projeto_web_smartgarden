@@ -26,11 +26,9 @@
                 <td>{{plantacao.qntPlantada}}</td>
                 <td><a href="#">
                     <div class="form-check" >
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault"></label>
+                        <input class="" type="checkbox" value="" id="flexCheckDefault">
                       </div>
                 </a></td>
-            
                 <td><a href="{% url 'update_plantacoes' plantacao.id %}" class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a href="{% url 'delete_plantacoes' plantacao.id %}" ><i class="fa-sharp fa-solid fa-trash text-black"></i></a></td>
             </tr>
             {% endfor %}

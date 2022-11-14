@@ -83,10 +83,16 @@ def areas(request):
 
 def cadastrar_areas(request):
     form = FormAreas(request.POST or None)
-    if form.is_valid():
+    area = AreaCultivo.objects.filter(nome=request.POST.get("nome"))
+    
+    if(area):
+        messages.error(request, 'Essa área já existe, informe um nome diferente')
+        
+    elif form.is_valid():
         form.save()
         messages.success(request, 'Área de cultivo cadastrada com sucesso!')
-        return redirect('cadastrar_areas')
+        
+    
     contexto = {'form': form}
     return render(request, 'cadastrar_areas.html', contexto)
 

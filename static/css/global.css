@@ -57,11 +57,20 @@ a:hover {
 	text-decoration: none !important;
 }
 
-/* check box */
+.form-check {
+	display: flex;
+	align-items: center;
+	padding: 0 !important;
+}
 
+/* check box */
 .form-check input{
 	width: 20px;
 	height: 20px;
-	bottom: 2px;
+	margin-right: .5rem;
+}
+
+label {
+	margin: 0 !important;
 }
 
