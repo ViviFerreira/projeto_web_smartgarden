@@ -42,15 +42,29 @@
  /*drop down*/
 
 .dropdown-menu{
-	align-items: center;
 	border: 1px solid var(--green-primary);
 	padding: 0;
 	margin: 0;
 	text-align: center;
 	margin-top: 20px;
 	width: 300px;
-	height: 400px;
+	height: 360px;
 	border-radius: 10px;
+}
+
+.dropdown-item-icone{
+	text-align: center;
+	justify-content: center;
+    display: flex;
+	background-color: red;
+}
+
+.content-dropdown{
+	margin-top: 50px;
+}
+
+.footer-dropdown{
+	display: flex;
 }
 
 .dropdown-toggle::after {
@@ -58,12 +72,14 @@
 }
 
 .dropdown-item{
-	width: 80%;
+	width: 90%;
 	padding: 0;
-	margin: 0;
-	justify-content: center;
-    display: flex;
+	margin: 10px;
+
 }
+
+
+
 
 
 .close{
