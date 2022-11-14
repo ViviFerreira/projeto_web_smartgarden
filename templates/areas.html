@@ -1,7 +1,7 @@
 {% extends 'layout.html' %} {% load static %} {% block content %}
 <div>
 	<div class="d-flex align-items-center justify-content-between mb-3">
-		<p class="title-page">Áreas de Cultivo, Bem Vindo {{user}}</p>
+		<p class="title-page">Áreas de Cultivo</p>
 		<a href="{% url 'cadastrar_areas' %}"><button type="button" class="btn btn_salvar">Adicionar</button></a>
 	</div>
 	
@@ -9,7 +9,7 @@
 		<div class="col-sm-3">
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title">Apta</h5>
+					<h5 class="card-title">Aptas para cultivo</h5>
 					<p class="card-text">{{qntApta}}</p>
 				</div>
 			</div>
@@ -17,7 +17,7 @@
 		<div class="col-sm-3">
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title">Inapto</h5>
+					<h5 class="card-title">Inaptas para cultivo</h5>
 					<p class="card-text">{{qntInapta}}</p>
 				</div>
 			</div>
@@ -25,7 +25,7 @@
 		<div class="col-sm-3">
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title">Disponivel</h5>
+					<h5 class="card-title">Áreas disponíveis</h5>
 					<p class="card-text">{{qntDisponivel}}</p>
 				</div>
 			</div>
@@ -33,23 +33,23 @@
 		<div class="col-sm-3">
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title">Ocupado</h5>
+					<h5 class="card-title">Áreas ocupadas</h5>
 					<p class="card-text">{{qntOcupado}}</p>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div>
-		<table class="table table-striped table-hover mt-3">
-			<thead class="border-botton border-secondary">
-				<tr>
-					<th scope="col">Código</th>
-					<th scope="col">Nome</th>
-					<th scope="col">Ocupação</th>
-					<th scope="col">Status</th>
-					<th scope="col"></i>Ação</th>
-				</tr>
+	<div class="table-content mt-5">
+		<table class="table  table-striped table-sm table-hover">
+			<thead class="border-botton">
+			<tr>
+				<th scope="col">Código</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Ocupação</th>
+				<th scope="col">Status</th>
+				<th scope="col"></i>Ação</th>
+			</tr>
 			</thead>
 			<tbody>
 				{% for area in areas %}
@@ -81,10 +81,10 @@
 	<div class="container_pagination">
 		<nav aria-label="Page-navigation">
 			<ul class="pagination">
-			{% if areas.has_previous %}
+				{% if areas.has_previous %}
 				<li class="page-item ">
 					<a class="page-link text-success" href="?page={{areas.previous_page_number}}" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
+						<span aria-hidden="true">&laquo;</span>
 					</a>
 				</li>
 			{% endif %}
