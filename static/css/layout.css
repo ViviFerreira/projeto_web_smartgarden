@@ -1,7 +1,7 @@
 body{
 	background-color: var(--light-color);
+	overflow: hidden;
 }
-
 
 .layout {
 	display: grid;
@@ -9,7 +9,6 @@ body{
 	grid-template-areas:
 		'header' 'header'
 		'aside' 'main';
-	overflow-x: hidden;
 }
 
 header {

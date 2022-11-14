@@ -37,8 +37,8 @@
 									{% comment %} {% endfor %} {% endcomment %}
 								</div>
 								<div class="footer-dropdown">
-									<a class="dropdown-item " href="{% url 'editar_perfil' user.id %}">Perfil</a> {% comment %} falta função de editar a area de perfil {% endcomment %}
-							  		<a class="dropdown-item " href="{% url 'logout' %}">Sair</a>
+									<a class="dropdown-item " href="{% url 'editar_perfil' user.id %}"><button class="btn btn_salvar">Editar</button></a> {% comment %} falta função de editar a area de perfil {% endcomment %}
+							  		<a class="dropdown-item " href="{% url 'logout' %}"><button class="btn btn-secondary">Sair</button></a>
 								</div>
 							
 						  </div>
