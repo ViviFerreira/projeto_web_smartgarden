@@ -69,10 +69,12 @@
 	align-items: center;
 }
 
-
-
 .content-dropdown{
 	margin-top: 30px;
+}
+
+.dropdown-item:hover{
+	background: none !important;
 }
 
 .footer-dropdown{
