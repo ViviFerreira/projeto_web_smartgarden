@@ -1,10 +1,13 @@
-from django.contrib.auth.models import User
-from django.db import models
 from datetime import datetime
+
+from django.contrib.auth.models import AbstractUser, User
+from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
 # Create your models here.
+class Users(AbstractUser):
+    avatar = models.ImageField(upload_to='media', null=True)
 class Categoria(models.Model):
     nome = models.CharField(max_length=45)
 

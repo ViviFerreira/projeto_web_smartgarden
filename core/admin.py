@@ -1,5 +1,10 @@
 from django.contrib import admin
+from django.contrib.auth import admin as admin_auth_django
+
+from .forms1 import UserChangeForm, UserCreationForm
 from .models import *
+from .models import Users
+
 
 class Listar_Plantacoes(admin.ModelAdmin):
     list_display = ('id', 'descricao', 'categoria', 'areacultivo', 'dtPlantio', 'colhida')
@@ -24,3 +29,11 @@ admin.site.register(Categoria)
 admin.site.register(AreaCultivo, Listar_Areas)
 admin.site.register(Plantacao, Listar_Plantacoes )
 admin.site.register(Irrigacao, Listar_Irrigacoes)
+@admin.register(Users)
+class UsersAdmin(admin_auth_django.UserAdmin):
+    form = UserChangeForm
+    add_form = UserCreationForm
+    model = Users
+    fieldsets = admin_auth_django.UserAdmin.fieldsets + (
+        ('Campos Novos', {'fields': ('avatar',)}),
+    )

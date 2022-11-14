@@ -20,7 +20,7 @@ def cadastrar_usuarios(request):
         email = request.POST.get("email")
         senha = request.POST.get("senha")
         try:
-            user = User.objects.create_user(
+            user = Users.objects.create_user(
                 username=username, email=email, password=senha
             )
             user.save()
@@ -184,3 +184,12 @@ def atualizar_area(sender, instance, created, **kwargs):
 post_save.connect(atualizar_area, sender=Plantacao)
 
 
+def editar_perfil(request,id):
+    user= Users.objects.get(id=id)
+    form = formUser(instance=user)
+    if request.method == 'POST':
+        form = formUser(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('areas')
+    return render(request, 'editar_perfil.html', {'formuser': form})
