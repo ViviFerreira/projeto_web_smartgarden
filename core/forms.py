@@ -40,3 +40,9 @@ class FormTarefas(forms.ModelForm):
         widgets = {
             'data':  DatePicker(),
         }
+
+class formUser(forms.ModelForm):
+    class Meta:
+        model = Users
+        fields = ['username','email','avatar',]
+       

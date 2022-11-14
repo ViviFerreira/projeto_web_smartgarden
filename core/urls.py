@@ -19,4 +19,6 @@ urlpatterns = [
     path('cadastrar_irrigacoes/' ,views.cadastrar_irrigacoes, name='cadastrar_irrigacoes'),
     path('cadastrar_tarefas/' ,views.cadastrar_tarefas, name='cadastrar_tarefas'),
     path('tarefas/' ,views.tarefas, name='tarefas'),
+    path('editar_perfil/<int:id>' ,views.editar_perfil, name='editar_perfil'),
+
 ]
