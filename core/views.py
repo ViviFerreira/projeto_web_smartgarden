@@ -54,7 +54,9 @@ def logout(request):
 
 
 def inicio(request):
-    return render(request, 'inicio.html')
+    chart = Users.objects.all()
+    chartc = Users.objects.all().count()
+    return render(request, 'inicio.html',{'chart':chart,'chartc':chartc})
 
 
 def areas(request):
