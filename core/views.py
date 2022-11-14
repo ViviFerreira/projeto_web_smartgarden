@@ -64,7 +64,7 @@ def areas(request):
     qntApta = AreaCultivo.objects.filter(apta=True).count()
     qntInapta = AreaCultivo.objects.filter(apta=False).count()
 
-    paginator = Paginator(areas, 3)
+    paginator = Paginator(areas, 6)
     page = request.GET.get('page')
     areas = paginator.get_page(page)
 
