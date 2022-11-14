@@ -31,7 +31,13 @@
 									{% comment %} {% for user in user %} {% endcomment %}
 									<a class="dropdown-item " href="#">Nome: {{user.username}}</a>
 									<a class="dropdown-item " href="#">Email:{{user.email}}</a>
-									<a class="dropdown-item " href="#"><img src="{{user.avatar.url}}"></a>
+									<a class="dropdown-item " href="#">
+										{% if user.avatar %}
+										<img src="{{user.avatar.url}}"
+										{% else %}
+										<i class="fa-solid fa-user text-dark" ></i>
+										{% endif %}
+									</a>
 
 									{% comment %} <a class="dropdown-item " href="#">Telefone: (99) 99999-9999</a> {% endcomment %}
 									{% comment %} {% endfor %} {% endcomment %}
