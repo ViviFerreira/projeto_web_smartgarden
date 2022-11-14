@@ -53,6 +53,22 @@
 			</thead>
 			<tbody>
 				{% for area in areas %}
+				<div class="modal fade" id="modal_confirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Aviso!</h5>
+						</div>
+						<div class="modal-body">
+						Deseja excluir essa área de plantio?
+						</div>
+						<div class="modal-footer">
+						<button type="button" id="cancelar"class="btn" data-dismiss="modal">Cancelar</button>
+							<a href="{% url 'delete_areas' area.id %}"><button type="button" id="confirmar" class="btn">Confirmar</button></a>
+						</div>
+					</div>
+					</div>
+				</div>
 				<tr>
 					<td scope="row">{{area.id}}</td>
 					<td>{{area.nome}}</td>
@@ -103,23 +119,5 @@
 	</div>
 	
 	<!-- Modal -->
-	<div class="modal fade" id="modal_confirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Aviso!</h5>
-			</div>
-			<div class="modal-body">
-			Deseja excluir essa área de plantio?
-			</div>
-			<div class="modal-footer">
-			<button type="button" id="cancelar"class="btn" data-dismiss="modal">Cancelar</button>
-			{% for area in areas %}
-				<a href="{% url 'delete_areas' area.id %}"><button type="button" id="confirmar" class="btn">Confirmar</button></a>
-			{% endfor %}
-			
-			</div>
-		</div>
-		</div>
-	</div>
+	
 {% endblock %}

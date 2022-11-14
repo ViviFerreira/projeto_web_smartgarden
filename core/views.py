@@ -184,6 +184,7 @@ def atualizar_area(sender, instance, created, **kwargs):
 post_save.connect(atualizar_area, sender=Plantacao)
 
 
+
 def editar_perfil(request,id):
     user= Users.objects.get(id=id)
     form = formUser(instance=user)

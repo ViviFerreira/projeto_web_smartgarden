@@ -28,12 +28,16 @@
 								</div>
 							  </a>
 							  	<div class="content-dropdown">
-									<a class="dropdown-item " href="#">Nome: José da silva</a>
-									<a class="dropdown-item " href="#">Email: Josédasilva@gmail.com</a>
-									<a class="dropdown-item " href="#">Telefone: (99) 99999-9999</a>
+									{% comment %} {% for user in user %} {% endcomment %}
+									<a class="dropdown-item " href="#">Nome: {{user.username}}</a>
+									<a class="dropdown-item " href="#">Email:{{user.email}}</a>
+									<a class="dropdown-item " href="#"><img src="{{user.avatar.url}}"></a>
+
+									{% comment %} <a class="dropdown-item " href="#">Telefone: (99) 99999-9999</a> {% endcomment %}
+									{% comment %} {% endfor %} {% endcomment %}
 								</div>
 								<div class="footer-dropdown">
-									<a class="dropdown-item " href="#" data-toggle="modal" data-target="#exampleModal">Perfil</a> {% comment %} falta função de editar a area de perfil {% endcomment %}
+									<a class="dropdown-item " href="{% url 'editar_perfil' user.id %}">Perfil</a> {% comment %} falta função de editar a area de perfil {% endcomment %}
 							  		<a class="dropdown-item " href="{% url 'logout' %}">Sair</a>
 								</div>
 							
