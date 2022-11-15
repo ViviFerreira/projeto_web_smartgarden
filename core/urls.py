@@ -19,8 +19,12 @@ urlpatterns = [
     path('delete_plantacoes/<int:id>', views.delete_plantacoes, name='delete_plantacoes'),
     path('irrigacoes/' ,views.irrigacoes, name='irrigacoes'),
     path('cadastrar_irrigacoes/' ,views.cadastrar_irrigacoes, name='cadastrar_irrigacoes'),
+    path('update_irrigacoes/<int:id>', views.update_irrigacoes, name='update_irrigacoes'),
+    path('delete_irrigacoes/<int:id>', views.delete_irrigacoes, name='delete_irrigacoes'),
     path('cadastrar_tarefas/' ,views.cadastrar_tarefas, name='cadastrar_tarefas'),
     path('tarefas/' ,views.tarefas, name='tarefas'),
+    path('update_tarefas/<int:id>', views.update_tarefas, name='update_tarefas'),
+    path('delete_tarefas/<int:id>', views.delete_tarefas, name='delete_tarefas'),
     #path('perfil/' ,views.perfil, name='perfil'),
     path('editar_perfil/<int:id>' ,views.editar_perfil, name='editar_perfil'),
 ]
