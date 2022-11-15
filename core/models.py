@@ -19,7 +19,7 @@ class AreaCultivo(models.Model):
     nome = models.CharField(max_length=100)
     disponivel = models.BooleanField(blank=True, null=False, default=True)
     apta = models.BooleanField(blank=False, null=False, default=True)
-    user = models.ForeignKey(Users,  on_delete=models.SET_NULL, null=True)
+    # user = models.ForeignKey(Users,  on_delete=models.SET_NULL, null=True)
     def __str__(self):
         return self.nome
 
