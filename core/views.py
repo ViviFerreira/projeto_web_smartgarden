@@ -54,13 +54,13 @@ def logout(request):
 
 
 def inicio(request):
-    chart = Users.objects.all()
-    chartc = Users.objects.all().count()
+    chart = AreaCultivo.objects.all()
+    chartc = AreaCultivo.objects.all().count()
     return render(request, 'inicio.html',{'chart':chart,'chartc':chartc})
 
 
 def areas(request):
-    areas = AreaCultivo.objects.all()
+    areas = AreaCultivo.objects.filter(user=request.user)
     qntDisponivel = AreaCultivo.objects.filter(disponivel=True).count()
     qntOcupado = AreaCultivo.objects.filter(disponivel=False).count()
     qntApta = AreaCultivo.objects.filter(apta=True).count()
@@ -117,6 +117,11 @@ def delete_areas(request, id):
 
 def plantacoes(request):
     plantacoes = Plantacao.objects.all()
+
+    paginator = Paginator(plantacoes, 6)
+    page = request.GET.get('page')
+    plantacoes = paginator.get_page(page)
+
     contexto = {
         'plantacoes': plantacoes
     }   
@@ -150,10 +155,30 @@ def delete_plantacoes(request, id):
 
 def irrigacoes(request):
     irrigacoes = Irrigacao.objects.all()
+
+    paginator = Paginator(irrigacoes, 6)
+    page = request.GET.get('page')
+    irrigacoes = paginator.get_page(page)
+
     contexto = {
         'irrigacoes': irrigacoes
     }   
     return render(request, 'irrigacoes.html', contexto)
+
+def update_irrigacoes(request,id):
+    irrigacoes = Irrigacao.objects.get(id=id)
+    form = FormIrrigacoes(instance=irrigacoes)
+    if request.method == 'POST':
+        form = FormIrrigacoes(request.POST, instance=irrigacoes)
+        if form.is_valid():
+            form.save()
+            return redirect('irrigacoes')
+    return render(request, 'update_irrigacoes.html', {'formirr': form})
+
+def delete_irrigacoes(request, id):
+    irrigacoes = get_object_or_404(Irrigacao, pk=id)
+    irrigacoes.delete()
+    return redirect("irrigacoes")
 
 
 def cadastrar_tarefas(request):
@@ -166,6 +191,10 @@ def cadastrar_tarefas(request):
 
 def tarefas(request):
     tarefas = Tarefa.objects.all()
+
+    paginator = Paginator(tarefas, 6)
+    page = request.GET.get('page')
+    tarefas = paginator.get_page(page)
     contexto = {
         'tarefas': tarefas
     }   
@@ -183,6 +212,21 @@ def cadastrar_irrigacoes(request):
     contexto = {'form': form}
 
     return render(request, 'cadastrar_irrigacoes.html', contexto)
+
+def update_tarefas(request,id):
+    tarefas = Tarefa.objects.get(id=id)
+    form = FormTarefas(instance=tarefas)
+    if request.method == 'POST':
+        form = FormTarefas(request.POST, instance=tarefas)
+        if form.is_valid():
+            form.save()
+            return redirect('tarefas')
+    return render(request, 'update_tarefas.html', {'formtar': form})
+
+def delete_tarefas(request, id):
+    tarefas = get_object_or_404(Tarefa, pk=id)
+    tarefas.delete()
+    return redirect("tarefas")
 
 
 def atualizar_area(sender, instance, created, **kwargs): 
