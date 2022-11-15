@@ -1,0 +1,29 @@
+a { color: inherit; } 
+
+
+.card {
+	border: solid 1px var(--green-primary);
+	border-radius: 8px;
+	padding: 0;
+	margin: 0;
+    top: 20%;
+	width: 600px;
+	height: 300px;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.card-text {
+	color: var(--green-primary);
+	font-size: 20px;
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+}
+
+.card-img-top{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
