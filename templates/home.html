@@ -10,7 +10,7 @@
 <div class="header">
 	<img class="logo" src="{%static 'img/LOGO.png'%}" />
 	<div class="section2-header">
-		<a href="#"><p>Home</p></a>
+		<a href="{% url 'inicio' %}"><p>Home</p></a>
 		<a href="{% url 'sobre' %}"><p>Sobre</p></a>
 		<a href="{% url 'login' %}">Login</a>
 		<a href="{% url 'cadastrar_usuarios' %}"><button class="btn-header">Criar Conta</button></a>
@@ -18,7 +18,7 @@
 </div>
 
 <div class="main">
-	{% include 'partials/_logotipo.html' %}
+	
 	{% block content %}
 	
 	{% endblock%}
