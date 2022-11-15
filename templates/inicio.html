@@ -3,16 +3,14 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <div class="title-page">Dashboards</div>
 <div class="container-canvas mt-3">
-    <canvas id="chartPlantada" width="400" height="250"></canvas>
-    <canvas id="chartColhida"  width="400" height="250"></canvas>
+    <canvas id="myChart" width="400" height="300"></canvas>
 </div>
 
 <script>
 
-    const ctxPlantada = document.getElementById('chartPlantada').getContext('2d');
-    const ctxColhida = document.getElementById('chartColhida').getContext('2d');
+    const ctx = document.getElementById('myChart').getContext('2d');
 
-    const chartPlantada = new Chart(ctxPlantada, {
+    const myChart = new Chart(ctx, {
       type: 'bar',
       data: {
         datasets: [{
@@ -34,27 +32,9 @@
           'rgba(255, 159, 64, 1)'
       ],
       borderWidth: 1,
-          label: 'Quantidades plantadas por plantação'
-        }],
-        labels: {{ labels|safe }}
-      },
-      options: {
-        responsive: false,
-        maintainAspectRatio: false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-    });
-
-    const chartColhida = new Chart(ctxColhida, {
-      type: 'bar',
-      data: {
-        datasets: [{
+          label: 'Quantidade plantada'
+        },
+        {
           data: {{ qtdsColhidas|safe }},
           backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -73,8 +53,9 @@
           'rgba(255, 159, 64, 1)'
       ],
       borderWidth: 1,
-          label: 'Quantidades colhidas por plantação'
-        }],
+          label: 'Quantidade colhida'
+        }
+        ],
         labels: {{ labels|safe }}
       },
       options: {
@@ -89,6 +70,7 @@
         }
     }
     });
+
 </script>
 
 {% endblock %}
