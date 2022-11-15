@@ -9,25 +9,16 @@
 {%block body%}
 <div class="header">
 	<img class="logo" src="{%static 'img/LOGO.png'%}" />
-	<div class="section-header">
-		<a href="#"><p>Home</p></a>
-		<a href="#"><p>Sobre</p></a>
-		<a href="#"><p>Contato</p></a>
-		<a href="#"><p>Ajuda</p></a>
-	</div>
 	<div class="section2-header">
+		<a href="{% url 'inicio' %}"><p>Home</p></a>
+		<a href="{% url 'sobre' %}"><p>Sobre</p></a>
 		<a href="{% url 'login' %}">Login</a>
 		<a href="{% url 'cadastrar_usuarios' %}"><button class="btn-header">Criar Conta</button></a>
 	</div>
 </div>
+
 <div class="main">
-	<div class="section1-main">
-		<h2 class="smg">Smart <span>Garden</span></h2>
-		<h6 class="smg">
-			<p>A melhor opção em cuidado com o seu <br />jardim!</p>
-		</h6>
-		<img src="{%static 'img/home.png'%}" width="360" height="360" />
-	</div>
+	
 	{% block content %}
 	
 	{% endblock%}

@@ -224,8 +224,11 @@ def editar_perfil(request,id):
     user= Users.objects.get(id=id)
     form = formUser(instance=user)
     if request.method == 'POST':
-        form = formUser(request.POST, instance=user)
+        form = formUser(request.POST,request.FILES, instance=user)
         if form.is_valid():
             form.save()
             return redirect('areas')
     return render(request, 'editar_perfil.html', {'formuser': form})
+
+def sobre(request):
+    return render(request,'sobre.html')

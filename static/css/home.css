@@ -6,26 +6,26 @@ body {
 	height: 10vh;
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	justify-content:flex-end;
 	align-items: center;
 }
 
 .logo {
 	display: flex;
-	align-items: initial;
+	margin-right: 57%;
 	margin-left: 10px;
 	width: 89px;
 	height: 38px;
 }
 
-.header .section-header {
-	padding-top: 10px;
+.section-header {
+	padding-top: 16px;
 	display: flex;
-	flex-direction: row;
 	gap: 50px;
+	flex-direction: row;
 	text-decoration: none;
-	color: black;
 }
+
 .section2-header {
 	padding: 10px;
 	display: flex;

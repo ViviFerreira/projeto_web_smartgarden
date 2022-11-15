@@ -7,8 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 class Users(AbstractUser):
-    avatar = models.ImageField(upload_to='', null=True, blank=True, default='nulo')
-    
+    avatar = models.ImageField("Icone do perfil",upload_to='', null=True, blank=True, default='nulo')
 class Categoria(models.Model):
     nome = models.CharField(max_length=45)
 
