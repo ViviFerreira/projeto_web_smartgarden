@@ -54,9 +54,26 @@ def logout(request):
 
 
 def inicio(request):
-    chart = Users.objects.all()
-    chartc = Users.objects.all().count()
-    return render(request, 'inicio.html',{'chart':chart,'chartc':chartc})
+    
+    labels = []
+
+    qtdsPlantadas = []
+    qtdsColhidas = []
+
+    dataset = Plantacao.objects.all()
+
+    for plantacao in dataset:
+        labels.append(plantacao.descricao)
+        qtdsPlantadas.append(plantacao.qntPlantada)
+        qtdsColhidas.append(plantacao.qntColhida)
+
+    contexto = {
+        'labels':labels,
+         'qtdsPlantadas':qtdsPlantadas, 
+         'qtdsColhidas':qtdsColhidas, 
+    }
+
+    return render(request, 'inicio.html',contexto)
 
 
 def areas(request):
@@ -131,6 +148,16 @@ def update_plantacoes(request,id):
             form.save()
             return redirect('plantacoes')
     return render(request, 'update_plantacoes.html', {'formplant': form})
+
+def update_colhida(request,id):
+    plantacoes = Plantacao.objects.get(id=id)
+    form = FormPlantacoes(instance=plantacoes)
+    if request.method == 'POST':
+        form = FormPlantacoes(request.POST, instance=plantacoes)
+        if form.is_valid():
+            form.save()
+            return redirect('plantacoes')
+    return render(request, 'update_colhida.html', {'formplant': form})
 
 def cadastrar_plantacoes(request):
     form = FormPlantacoes(request.POST or None)

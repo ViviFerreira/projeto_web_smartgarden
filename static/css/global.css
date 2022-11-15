@@ -74,3 +74,9 @@ label {
 	margin: 0 !important;
 }
 
+.container-canvas {
+	width: 70%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+}

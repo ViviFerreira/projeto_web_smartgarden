@@ -14,6 +14,7 @@ urlpatterns = [
     path('plantacoes/', views.plantacoes, name='plantacoes'),
     path('cadastrar_plantacoes/', views.cadastrar_plantacoes, name='cadastrar_plantacoes'),
     path('update_plantacoes/<int:id>', views.update_plantacoes, name='update_plantacoes'),
+    path('update_colhida/<int:id>', views.update_colhida, name='update_colhida'),
     path('delete_plantacoes/<int:id>', views.delete_plantacoes, name='delete_plantacoes'),
     path('irrigacoes/' ,views.irrigacoes, name='irrigacoes'),
     path('cadastrar_irrigacoes/' ,views.cadastrar_irrigacoes, name='cadastrar_irrigacoes'),

@@ -22,31 +22,25 @@
 						<div class="dropdown">
 							<a href="#" data-toggle="dropdown"><i class="fa-solid fa-user text-dark" ></i></a>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-							  <a class="dropdown-item-icone " href="#">
-								<div class="circle-dropdown">
-									<i class="fa-solid fa-user fa-3x text-dark" ></i>
-								</div>
-							  </a>
 							  	<div class="content-dropdown">
-									{% comment %} {% for user in user %} {% endcomment %}
-									<a class="dropdown-item " href="#">Nome: {{user.username}}</a>
-									<a class="dropdown-item " href="#">Email:{{user.email}}</a>
-									<a class="dropdown-item " href="#">
-										{% if user.avatar %}
-										<img src="{{user.avatar.url}}"
+									  {% if user.avatar %}
+									  	<div class="dropdown-item">
+											<img class="icone_user" src="{{user.avatar.url}}"
+										</div>
 										{% else %}
-										<i class="fa-solid fa-user text-dark" ></i>
-										{% endif %}
-									</a>
-
-									{% comment %} <a class="dropdown-item " href="#">Telefone: (99) 99999-9999</a> {% endcomment %}
-									{% comment %} {% endfor %} {% endcomment %}
+										<div class="dropdown-item-icone">
+											<div class="circle-dropdown">
+												<i class="fa-solid fa-user fa-3x text-dark" ></i>
+											</div>
+										</div>
+									{% endif %}
+									<a class="dropdown-item" href="#">Nome:{{user.username}}</a>
+									<a class="dropdown-item" href="#">Email:{{user.email}}</a>
 								</div>
 								<div class="footer-dropdown">
-									<a class="dropdown-item " href="{% url 'editar_perfil' user.id %}"><button class="btn btn_salvar">Editar</button></a> {% comment %} falta função de editar a area de perfil {% endcomment %}
-							  		<a class="dropdown-item " href="{% url 'logout' %}"><button class="btn btn-secondary">Sair</button></a>
+									<a class="dropdown-item" href="{% url 'editar_perfil' user.id %}"><button class="btn btn_salvar">Editar</button></a> {% comment %} falta função de editar a area de perfil {% endcomment %}
+							  		<a class="dropdown-item" href="{% url 'logout' %}"><button class="btn btn-secondary">Sair</button></a>
 								</div>
-							
 						  </div>
 					</div>
 				</li>

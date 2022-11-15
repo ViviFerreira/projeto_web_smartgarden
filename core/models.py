@@ -8,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 # Create your models here.
 class Users(AbstractUser):
     avatar = models.ImageField(upload_to='', null=True, blank=True, default='nulo')
+    
 class Categoria(models.Model):
     nome = models.CharField(max_length=45)
 
@@ -28,6 +29,7 @@ class Plantacao(models.Model):
     descricao = models.CharField(max_length=100)
     qntDiasColheita = models.IntegerField(null=True)
     qntPlantada = models.IntegerField(null=True)
+    qntColhida = models.IntegerField(null=True)
     dtPlantio = models.DateTimeField(default=datetime.today)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     areacultivo = models.ForeignKey(AreaCultivo, on_delete=models.CASCADE, null=True)

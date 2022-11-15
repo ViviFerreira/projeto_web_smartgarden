@@ -1,0 +1,65 @@
+{% extends 'layout.html' %} {% block content %} 
+{{ form.media }} {% load widget_tweaks%}
+
+<p class="title-page">Plantação colhida</p>
+
+<section class="container_forms">
+	{% include 'partials/_alerts.html '%}
+	<form action="" method="post">
+		{% csrf_token %} 
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-group">
+				<label>Descricão</label>
+					{% render_field formplant.descricao|append_attr:"disabled:disabled" class+="form-control"%}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Área de Cultivo</label>
+					{% render_field formplant.areacultivo|append_attr:"disabled:disabled" class+="form-control" %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-group">
+				<label>Categoria</label>
+					{% render_field formplant.categoria|append_attr:"disabled:disabled" class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Dias até a colheita</label>
+					{% render_field formplant.qntDiasColheita|append_attr:"disabled:disabled" class+="form-control" %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-group">
+				<label>Data do Plantio</label>
+					{% render_field formplant.dtPlantio|append_attr:"disabled:disabled" class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Quantidade Plantada</label>
+					{% render_field formplant.qntPlantada|append_attr:"disabled:disabled" class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Quantidade Colhida</label>
+					{% render_field formplant.qntColhida class+="form-control" %}
+				</div>
+			</div>
+		</div>
+
+		<input type="submit" value="Salvar" class="btn btn_salvar" />
+	</form>
+</section>
+
+{% endblock %}

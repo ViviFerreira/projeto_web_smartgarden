@@ -12,7 +12,7 @@
                 <th scope="col">Data do plantio</th>
                 <th scope="col">Dias até a colheita</th>
                 <th scope="col">Qntd plantada</th>
-                <th scope="col"></i>Colhido</th>
+                <th scope="col"></i>Status</th>
                 <th scope="col"></i>Ação</th>
             </tr>
         </thead>
@@ -24,11 +24,7 @@
                 <td>{{plantacao.dtPlantio}}</td>
                 <td>{{plantacao.qntDiasColheita}}</td> 
                 <td>{{plantacao.qntPlantada}}</td>
-                <td><a href="#">
-                    <div class="form-check" >
-                        <input class="" type="checkbox" value="" id="flexCheckDefault">
-                      </div>
-                </a></td>
+                <td><a href="{% url 'update_colhida' plantacao.id %}"><button class="btn btn-sm btn_tables"> Colhida </button></a></td>
                 <td><a href="{% url 'update_plantacoes' plantacao.id %}" class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a href="{% url 'delete_plantacoes' plantacao.id %}" ><i class="fa-sharp fa-solid fa-trash text-black"></i></a></td>
             </tr>
             {% endfor %}
