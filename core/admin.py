@@ -25,10 +25,10 @@ class Listar_Irrigacoes(admin.ModelAdmin):
     list_per_page = 10
 
 # Register your models here.
-admin.site.register(Categoria)
 admin.site.register(AreaCultivo, Listar_Areas)
 admin.site.register(Plantacao, Listar_Plantacoes )
 admin.site.register(Irrigacao, Listar_Irrigacoes)
+
 @admin.register(Users)
 class UsersAdmin(admin_auth_django.UserAdmin):
     form = UserChangeForm

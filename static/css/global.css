@@ -36,7 +36,8 @@ body {
 }
 
 .table-content {
-	height: 40vh;
+	min-height: 40vh;
+	/* padding-bottom: 5px; */
 }
 
 .title-page {
@@ -76,7 +77,6 @@ label {
 
 .container-canvas {
 	width: 70%;
-	height: 100%;
 	display: flex;
 	justify-content: space-between;
 }

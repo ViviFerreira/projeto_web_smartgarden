@@ -20,7 +20,7 @@ class FormPlantacoes(forms.ModelForm):
         model = Plantacao
         fields = '__all__'
         widgets = {
-            'dtPlantio':  DatePicker(),
+            # 'dtPlantio':  DatePicker(),
         }
 
 class FormIrrigacoes(forms.ModelForm):

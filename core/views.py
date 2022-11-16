@@ -55,12 +55,17 @@ def logout(request):
 
 def inicio(request):
     
-    labels = []
+    areas = AreaCultivo.objects.all()
+    dataset = Plantacao.objects.all()
 
+    qntDisponivel = AreaCultivo.objects.filter(disponivel=True).count()
+    qntOcupado = AreaCultivo.objects.filter(disponivel=False).count()
+   
+    labels = []
     qtdsPlantadas = []
     qtdsColhidas = []
+    statusAreas = [qntDisponivel,qntOcupado]
 
-    dataset = Plantacao.objects.all()
 
     for plantacao in dataset:
         labels.append(plantacao.descricao)
@@ -71,13 +76,15 @@ def inicio(request):
         'labels':labels,
          'qtdsPlantadas':qtdsPlantadas, 
          'qtdsColhidas':qtdsColhidas, 
+         'statusAreas': statusAreas
     }
 
     return render(request, 'inicio.html',contexto)
 
 
 def areas(request):
-    areas = AreaCultivo.objects.filter(user=request.user)
+    areas = AreaCultivo.objects.all()
+
     qntDisponivel = AreaCultivo.objects.filter(disponivel=True).count()
     qntOcupado = AreaCultivo.objects.filter(disponivel=False).count()
     qntApta = AreaCultivo.objects.filter(apta=True).count()
@@ -122,6 +129,7 @@ def update_areas(request, id):
         form = FormAreas(request.POST, instance=area)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Área de cultivo atualizada com sucesso!')
             return redirect('areas')
     return render(request, 'update_areas.html', {'formareas': form})
 
@@ -133,7 +141,7 @@ def delete_areas(request, id):
 
 
 def plantacoes(request):
-    plantacoes = Plantacao.objects.all()
+    plantacoes = Plantacao.objects.filter(colhida = 0)
 
     paginator = Paginator(plantacoes, 6)
     page = request.GET.get('page')
@@ -146,22 +154,27 @@ def plantacoes(request):
 
 def update_plantacoes(request,id):
     plantacoes = Plantacao.objects.get(id=id)
+
     form = FormPlantacoes(instance=plantacoes)
+    
     if request.method == 'POST':
         form = FormPlantacoes(request.POST, instance=plantacoes)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Plantação atualizada com sucesso!')
             return redirect('plantacoes')
     return render(request, 'update_plantacoes.html', {'formplant': form})
 
 def update_colhida(request,id):
     plantacoes = Plantacao.objects.get(id=id)
     form = FormPlantacoes(instance=plantacoes)
+    
     if request.method == 'POST':
-        form = FormPlantacoes(request.POST, instance=plantacoes)
-        if form.is_valid():
-            form.save()
+        qntColhida = request.POST.get("qntColhida")
+        
+        if Plantacao.objects.filter(id=id).update(qntColhida=qntColhida, colhida=True):
             return redirect('plantacoes')
+
     return render(request, 'update_colhida.html', {'formplant': form})
 
 def cadastrar_plantacoes(request):
