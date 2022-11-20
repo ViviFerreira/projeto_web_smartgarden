@@ -288,3 +288,7 @@ def editar_perfil(request,id):
 
 def sobre(request):
     return render(request,'sobre.html')
+
+    
+def handler404(request, exception):
+    return render(request,'not_found.html')
