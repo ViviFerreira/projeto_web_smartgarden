@@ -26,7 +26,12 @@
                     <td>{{plantacao.dtPlantio}}</td>
                     <td>{{plantacao.qntDiasColheita}}</td> 
                     <td>{{plantacao.qntPlantada}}</td>
-                    <td><a href="{% url 'update_colhida' plantacao.id %}"><button class="btn btn-sm btn_tables"> Colhida </button></a></td>
+                    <td>{% if plantacao.colhida == 0 %}
+                        <a href="{% url 'update_colhida' plantacao.id %}"><button class="badge btn btn-sm btn_tables btn_red"> Não colhida </button></a>
+                        {% else %} 
+                        <a href="{% url 'update_colhida' plantacao.id %}"><button class="badge btn btn-sm btn_tables btn_green"> Colhido</button></a>
+                        {% endif %}
+                    </td>
                     <td><a href="{% url 'update_plantacoes' plantacao.id %}" class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a href="{% url 'delete_plantacoes' plantacao.id %}" ><i class="fa-sharp fa-solid fa-trash text-black"></i></a></td>
                 </tr>
                 {% endfor %}

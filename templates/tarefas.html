@@ -27,11 +27,12 @@
                 {%else%}
                 <td> - </td>
                 {%endif%}
-                <td><a href="#">
-                    <div class="form-check" >
-                        <input class="" type="checkbox" value="" id="flexCheckDefault">
-                      </div>
-                </a></td>
+                <td>{% if tarefa.concluida == 0 %}
+                    <a href="{% url 'update_tarefa_concluida' tarefa.id %}"><button class="badge btn btn-sm btn_tables btn_red"> A fazer </button></a>
+                    {% else %} 
+                    <a href="{% url 'update_tarefa_concluida' tarefa.id %}"><button class="badge btn btn-sm btn_tables btn_green"> Feita</button></a>
+                    {% endif %}
+                </td>
                 <td><a href="{% url 'update_tarefas' tarefa.id %}" class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a href="{% url 'delete_tarefas' tarefa.id%}" ><i class="fa-sharp fa-solid fa-trash text-black"></i></a></td>
             </tr>
             {% endfor %}

@@ -141,7 +141,7 @@ def delete_areas(request, id):
 
 
 def plantacoes(request):
-    plantacoes = Plantacao.objects.filter(colhida = 0)
+    plantacoes = Plantacao.objects.all()
 
     paginator = Paginator(plantacoes, 6)
     page = request.GET.get('page')
@@ -176,6 +176,16 @@ def update_colhida(request,id):
             return redirect('plantacoes')
 
     return render(request, 'update_colhida.html', {'formplant': form})
+
+def update_irrigado(request,id):    
+    Irrigacao.objects.filter(id=id).update(concluida=True)
+
+    return redirect('irrigacoes')
+
+def update_tarefa_concluida(request,id):    
+    Tarefa.objects.filter(id=id).update(concluida=True)
+
+    return redirect('tarefas')
 
 def cadastrar_plantacoes(request):
     form = FormPlantacoes(request.POST or None)

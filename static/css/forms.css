@@ -6,18 +6,24 @@
 	background-color: var(--white-color);
 }
 
-.btn_tables, 
+.btn_tables,
 .btn_tables:hover {
-	background-color: var(--green-secondary) !important;
 	color: var(--white-color) !important;
+	font-weight: 100;
+	font-size: 13px;
+}
+.btn_green {
+	background-color: var(--green-secondary) !important;
 }
 
-.btn_salvar, 
+.btn_red {
+	background-color: var(--red-color) !important;
+}
+
+.btn_salvar,
 .btn_salvar:hover {
 	background-color: var(--green-secondary) !important;
 	color: var(--white-color) !important;
 	float: right;
 	margin-left: 0.5rem;
 }
-
-

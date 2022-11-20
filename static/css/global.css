@@ -12,6 +12,7 @@
 	--gray-dark: #3f3d3d;
 	--green-primary: #0bd692;
 	--green-secondary: #36ae7c;
+	--red-color: #f46060;
 	--white-color: #ffffff;
 	--light-color: #eeeeee;
 	--body-font: 'Inter', sans-serif;
@@ -35,6 +36,9 @@ body {
 	max-width: 100vw;
 }
 
+.table-content-areas {
+	min-height: 40vh;
+}
 .table-content {
 	min-height: 60vh;
 }
@@ -45,10 +49,10 @@ body {
 	font-size: 1.1rem;
 }
 
-.container_pagination{
+.container_pagination {
 	margin-top: 2rem;
-	display:flex;
-	position:relative; 
+	display: flex;
+	position: relative;
 	justify-content: flex-end;
 }
 
@@ -64,10 +68,10 @@ a:hover {
 }
 
 /* check box */
-.form-check input{
+.form-check input {
 	width: 20px;
 	height: 20px;
-	margin-right: .5rem;
+	margin-right: 0.5rem;
 }
 
 label {
