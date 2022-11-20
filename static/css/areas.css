@@ -4,7 +4,9 @@
 }
 
 /*cards*/
-a { color: inherit; } 
+a {
+	color: inherit;
+}
 
 .card {
 	border: solid 1px var(--green-primary);
@@ -35,19 +37,16 @@ a { color: inherit; }
 
 /* botões do modal */
 
-#exampleModal{
+#exampleModal {
 	width: 100%;
 }
 
-
-#confirmar:hover{
-	background-color: var(--green-primary);
+#confirmar:hover {
+	background-color: var(--green-secondary);
 	color: var(--light-color);
-
 }
 
-#cancelar:hover{
+#cancelar:hover {
 	background-color: var(--gray-dark);
 	color: var(--light-color);
-	
 }

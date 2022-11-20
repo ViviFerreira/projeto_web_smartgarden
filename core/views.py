@@ -5,6 +5,7 @@ from django.db.models.aggregates import Count
 from django.db.models.signals import post_save
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from datetime import timedelta
 
 from .forms import *
 from .models import *
@@ -176,8 +177,15 @@ def update_colhida(request,id):
 
     return render(request, 'update_colhida.html', {'formplant': form})
 
-def update_irrigado(request,id):    
-    Irrigacao.objects.filter(id=id).update(concluida=True)
+def update_irrigada(request,id):   
+    irrigacao = Irrigacao.objects.get(id=id)
+    if irrigacao.programacao != 'TODOS_DIAS': 
+        ultima_irrigacao = irrigacao.dtProxIrrigacao
+        Irrigacao.objects.filter(id=id).update(concluida=True, dtUltIrrigacao=ultima_irrigacao)
+    if irrigacao.programacao == 'TODOS_DIAS':
+        ultima_irrigacao = irrigacao.dtProxIrrigacao
+        proxima_irrigacao = ultima_irrigacao + timedelta(1)
+        Irrigacao.objects.filter(id=id).update(dtUltIrrigacao=ultima_irrigacao, dtProxIrrigacao=proxima_irrigacao)
 
     return redirect('irrigacoes')
 
@@ -216,6 +224,7 @@ def irrigacoes(request):
 
 def update_irrigacoes(request,id):
     irrigacoes = Irrigacao.objects.get(id=id)
+
     form = FormIrrigacoes(instance=irrigacoes)
     if request.method == 'POST':
         form = FormIrrigacoes(request.POST, instance=irrigacoes)
@@ -291,7 +300,6 @@ def atualizar_area(sender, instance, created, **kwargs):
         AreaCultivo.objects.filter(nome=instance.areacultivo).update(disponivel=False)
       
 post_save.connect(atualizar_area, sender=Plantacao)
-
 
 
 def editar_perfil(request,id):

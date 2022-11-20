@@ -23,15 +23,15 @@
                 <div class="modal fade" id="modal_confirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Aviso!</h5>
+							<div class="modal-header bg-danger">
+								<h5 class="modal-title" id="exampleModalLabel"> <i class='bx bxs-message-square-error'></i> Confirmar exclusão</h5>
 							</div>
 							<div class="modal-body">
-								Deseja excluir essa área de plantio?
+								Deseja excluir essa plantação?
 							</div>
 							<div class="modal-footer">
-								<button type="button" id="cancelar"class="btn" data-dismiss="modal">Cancelar</button>
-								<a href="{% url 'delete_plantacoes' plantacao.id %}"><button type="button" id="confirmar" class="btn">Confirmar</button></a>
+								<button type="button" id="cancelar"class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Cancelar</button>
+								<a href="{% url 'delete_plantacoes' plantacao.id %}"><button type="button" id="confirmar" class="btn btn-outline-success btn-sm">Confirmar</button></a>
 							</div>
 						</div>
 					</div>
@@ -45,7 +45,7 @@
                     <td>{% if plantacao.colhida == 0 %}
                         <a href="{% url 'update_colhida' plantacao.id %}"><button class="badge btn btn-sm btn_tables btn_red"> Não colhida </button></a>
                         {% else %} 
-                        <a href="{% url 'update_colhida' plantacao.id %}"><button class="badge btn btn-sm btn_tables btn_green"> Colhido</button></a>
+                        <button class="badge btn btn-sm btn_tables btn_green disabled"> Colhido</button>
                         {% endif %}
                     </td>
                     <td><a href="{% url 'update_plantacoes' plantacao.id %}" class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a data-toggle="modal" data-target="#modal_confirm"><i class="fa-sharp fa-solid fa-trash text-black" data-toggle="modal fade" data-target="#exampleModal"></i></a></td>
