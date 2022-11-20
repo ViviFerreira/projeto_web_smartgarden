@@ -1,4 +1,50 @@
-<form action="" method="post">
-    {{formirr}}
-    <input type="submit" value="enviar">
-</form>
+{% extends 'layout.html' %} {% block content %} 
+{{ form.media }} {% load widget_tweaks%}
+
+<p class="title-page">Editar Irrigações</p>
+
+<section class="container_forms">
+	{% include 'partials/_alerts.html '%}
+	<form action="{% url 'cadastrar_irrigacoes' %}" method="post">
+		{% csrf_token %} 
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-group">
+				<label>Plantação</label>
+					{% render_field formirr.plantacao class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Próxima irrigação em</label>
+					{% render_field formirr.dtProxIrrigacao class+="form-control" %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-group">
+				<label>Horário</label>
+					{% render_field formirr.horario class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Duração</label>
+					{% render_field formirr.duracao class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Defina a programação da irrigação</label>
+					{% render_field formirr.programacao class+="form-control" %}
+				</div>
+			</div>
+		</div>
+
+		<input type="submit" value="Salvar" class="btn btn_salvar" />
+	</form>
+</section>
+
+{% endblock %}

@@ -1,13 +1,50 @@
 {% extends 'layout.html' %} {% block content %} 
 {{ form.media }} {% load widget_tweaks%}
 
-<p class="title-page">Editar tarefas</p>
+<p class="title-page">Editar Tarefas</p>
 
 <section class="container_forms">
-    {% include 'partials/_alerts.html '%}
-    <form action="" method="post">{% csrf_token %}  
-        {{formtar}}
-        <input type="submit" value="Cadastrar" class="btn btn_salvar" />
-    </form>
+	{% include 'partials/_alerts.html '%}
+	<form action="{% url 'cadastrar_tarefas' %}" method="post">
+		{% csrf_token %} 
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-group">
+				<label>Descrição da tarefa</label>
+					{% render_field formtar.descricao class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Data da Tarefa</label>
+					{% render_field formtar.data class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Realizar tarefa em</label>
+					{% render_field formtar.tipoTarefa class+="form-control" %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-group">
+				<label>Área de cultivo</label>
+					{% render_field formtar.areacultivo class+="form-control" %}
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label>Plantação</label>
+					{% render_field formtar.plantacao class+="form-control" %}
+				</div>
+			</div>
+		</div>
+
+		<input type="submit" value="Salvar" class="btn btn_salvar" />
+	</form>
 </section>
+
 {% endblock %}
