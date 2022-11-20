@@ -1,16 +1,16 @@
-{% extends 'layout.html' %} {% block content %} 
-{{ form.media }} {% load widget_tweaks%}
+{% extends 'layout.html' %} {% block content %} {{ form.media }} {% load
+widget_tweaks%}
 
 <p class="title-page">Cadastrar Irrigações</p>
 
 <section class="container_forms">
 	{% include 'partials/_alerts.html '%}
 	<form action="{% url 'cadastrar_irrigacoes' %}" method="post">
-		{% csrf_token %} 
+		{% csrf_token %}
 		<div class="row mt-3">
 			<div class="col">
 				<div class="form-group">
-				<label>Plantação</label>
+					<label>Plantação</label>
 					{% render_field form.plantacao class+="form-control" %}
 				</div>
 			</div>
@@ -25,7 +25,7 @@
 		<div class="row mt-3">
 			<div class="col">
 				<div class="form-group">
-				<label>Horário</label>
+					<label>Horário</label>
 					{% render_field form.horario class+="form-control" %}
 				</div>
 			</div>
