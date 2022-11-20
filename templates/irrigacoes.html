@@ -21,6 +21,22 @@
         </thead>
         <tbody>
             {% for irrigacao in irrigacoes %}
+            <div class="modal fade" id="modal_confirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Aviso!</h5>
+                        </div>
+                        <div class="modal-body">
+                            Deseja excluir essa área de plantio?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="cancelar"class="btn" data-dismiss="modal">Cancelar</button>
+                            <a href="{% url 'delete_irrigacoes' irrigacao.id %}"><button type="button" id="confirmar" class="btn">Confirmar</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <tr>
                 <td>{{irrigacao.plantacao}}</td>
                 {% if irrigacao.programacao == 'TODOS_DIAS'%}<td>Todos os dias</td>{% else %}<td>Não se repete</td>{% endif %}
@@ -34,7 +50,7 @@
                     <a href="{% url 'update_irrigado' irrigacao.id %}"><button class="badge btn btn-sm btn_tables btn_green"> Irrigado</button></a>
                     {% endif %}
                 </td>
-                <td><a href="{% url 'update_irrigacoes' irrigacao.id %}" class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a href="{% url 'delete_irrigacoes' irrigacao.id %}" ><i class="fa-sharp fa-solid fa-trash text-black"></i></a></td>
+                <td><a href="{% url 'update_irrigacoes' irrigacao.id %}" class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a data-toggle="modal" data-target="#modal_confirm"><i class="fa-sharp fa-solid fa-trash text-black" data-toggle="modal fade" data-target="#exampleModal"></i></a></td>
             </tr>
             {% endfor %}
         </tbody>
