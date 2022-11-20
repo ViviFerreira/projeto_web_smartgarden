@@ -6,13 +6,12 @@ from django.db.models.signals import post_save
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from datetime import timedelta
+from django.contrib.auth.decorators import login_required
 
 from .forms import *
 from .models import *
 
 # Create your views here.
-
-
 def cadastrar_usuarios(request):
     if request.method == "GET":
         return render(request, "cadastrar_usuarios.html")
@@ -28,7 +27,6 @@ def cadastrar_usuarios(request):
             return render(request, "login_usuario.html")
         except:
             return render(request, "cadastrar_usuarios.html")
-
 
 def login(request):
     if request.method == "GET":
@@ -48,12 +46,11 @@ def login(request):
             auth.login(request, user)
             return redirect("inicio/")
 
-
 def logout(request):
     auth.logout(request)
     return redirect("/")
 
-
+@login_required(login_url='/')
 def inicio(request):
     
     areas = AreaCultivo.objects.all()
@@ -83,6 +80,7 @@ def inicio(request):
     return render(request, 'inicio.html',contexto)
 
 
+@login_required(login_url='/')
 def areas(request):
     areas = AreaCultivo.objects.all()
     qntDisponivel = AreaCultivo.objects.filter(disponivel=True).count()
@@ -105,6 +103,7 @@ def areas(request):
     return render(request, 'areas.html', contexto)
 
 
+@login_required(login_url='/')
 def cadastrar_areas(request):
     form = FormAreas(request.POST or None)
     area = AreaCultivo.objects.filter(nome=request.POST.get("nome"))
@@ -121,6 +120,7 @@ def cadastrar_areas(request):
     return render(request, 'cadastrar_areas.html', contexto)
 
 
+@login_required(login_url='/')
 def update_areas(request, id):
     area = AreaCultivo.objects.get(id=id)
     form = FormAreas(instance=area)
@@ -134,12 +134,14 @@ def update_areas(request, id):
     return render(request, 'update_areas.html', {'formareas': form})
 
 
+@login_required(login_url='/')
 def delete_areas(request, id):
     area = get_object_or_404(AreaCultivo, pk=id)
     area.delete()
     return redirect("areas")
 
 
+@login_required(login_url='/')
 def plantacoes(request):
     plantacoes = Plantacao.objects.all()
 
@@ -152,6 +154,7 @@ def plantacoes(request):
     }   
     return render(request, 'plantações.html', contexto)
 
+@login_required(login_url='/')
 def update_plantacoes(request,id):
     plantacoes = Plantacao.objects.get(id=id)
 
@@ -165,6 +168,7 @@ def update_plantacoes(request,id):
             return redirect('plantacoes')
     return render(request, 'update_plantacoes.html', {'formplant': form})
 
+@login_required(login_url='/')
 def update_colhida(request,id):
     plantacoes = Plantacao.objects.get(id=id)
     form = FormPlantacoes(instance=plantacoes)
@@ -177,6 +181,7 @@ def update_colhida(request,id):
 
     return render(request, 'update_colhida.html', {'formplant': form})
 
+@login_required(login_url='/')
 def update_irrigada(request,id):   
     irrigacao = Irrigacao.objects.get(id=id)
     if irrigacao.programacao != 'TODOS_DIAS': 
@@ -189,11 +194,13 @@ def update_irrigada(request,id):
 
     return redirect('irrigacoes')
 
+@login_required(login_url='/')
 def update_tarefa_concluida(request,id):    
     Tarefa.objects.filter(id=id).update(concluida=True)
 
     return redirect('tarefas')
 
+@login_required(login_url='/')
 def cadastrar_plantacoes(request):
     form = FormPlantacoes(request.POST or None)
 
@@ -205,11 +212,13 @@ def cadastrar_plantacoes(request):
     
     return render(request, 'cadastrar_plantacoes.html', contexto)
 
+@login_required(login_url='/')
 def delete_plantacoes(request, id):
     plantacoes = get_object_or_404(Plantacao, pk=id)
     plantacoes.delete()
     return redirect("plantacoes")
 
+@login_required(login_url='/')
 def irrigacoes(request):
     irrigacoes = Irrigacao.objects.all()
 
@@ -222,6 +231,7 @@ def irrigacoes(request):
     }   
     return render(request, 'irrigacoes.html', contexto)
 
+@login_required(login_url='/')
 def update_irrigacoes(request,id):
     irrigacoes = Irrigacao.objects.get(id=id)
 
@@ -233,12 +243,14 @@ def update_irrigacoes(request,id):
             return redirect('irrigacoes')
     return render(request, 'update_irrigacoes.html', {'formirr': form})
 
+@login_required(login_url='/')
 def delete_irrigacoes(request, id):
     irrigacoes = get_object_or_404(Irrigacao, pk=id)
     irrigacoes.delete()
     return redirect("irrigacoes")
 
 
+@login_required(login_url='/')
 def cadastrar_tarefas(request):
     form = FormTarefas(request.POST or None)
     tipo_tarefa = request.POST.get("tipoTarefa")
@@ -255,6 +267,7 @@ def cadastrar_tarefas(request):
     contexto = {'form': form}
     return render(request, 'cadastrar_tarefas.html', contexto)
 
+@login_required(login_url='/')
 def tarefas(request):
     tarefas = Tarefa.objects.all()
 
@@ -266,6 +279,7 @@ def tarefas(request):
     }   
     return render(request, 'tarefas.html', contexto)
 
+@login_required(login_url='/')
 def cadastrar_irrigacoes(request):
     form = FormIrrigacoes(request.POST or None)
 
@@ -279,22 +293,36 @@ def cadastrar_irrigacoes(request):
 
     return render(request, 'cadastrar_irrigacoes.html', contexto)
 
+@login_required(login_url='/')
 def update_tarefas(request,id):
     tarefas = Tarefa.objects.get(id=id)
     form = FormTarefas(instance=tarefas)
+
     if request.method == 'POST':
         form = FormTarefas(request.POST, instance=tarefas)
-        if form.is_valid():
+
+        tipo_tarefa = request.POST.get("tipoTarefa")
+        area_cultivo = request.POST.get("areacultivo")
+        plantacao = request.POST.get("plantacao")
+
+        if tipo_tarefa == 'AREA' and not area_cultivo:
+            messages.error(request, 'Por favor, informe uma área de cultivo!')
+        elif tipo_tarefa == 'PLANTACAO' and not plantacao:
+            messages.error(request, 'Por favor, informe uma plantação!')
+        elif form.is_valid():
             form.save()
             return redirect('tarefas')
+
     return render(request, 'update_tarefas.html', {'formtar': form})
 
+@login_required(login_url='/')
 def delete_tarefas(request, id):
     tarefas = get_object_or_404(Tarefa, pk=id)
     tarefas.delete()
     return redirect("tarefas")
 
 
+@login_required(login_url='/')
 def atualizar_area(sender, instance, created, **kwargs): 
     if created:
         AreaCultivo.objects.filter(nome=instance.areacultivo).update(disponivel=False)
@@ -302,6 +330,7 @@ def atualizar_area(sender, instance, created, **kwargs):
 post_save.connect(atualizar_area, sender=Plantacao)
 
 
+@login_required(login_url='/')
 def editar_perfil(request,id):
     user= Users.objects.get(id=id)
     form = formUser(instance=user)
@@ -315,6 +344,6 @@ def editar_perfil(request,id):
 def sobre(request):
     return render(request,'sobre.html')
 
-    
+   
 def handler404(request, exception):
     return render(request,'not_found.html')

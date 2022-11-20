@@ -28,9 +28,9 @@ class FormIrrigacoes(forms.ModelForm):
         model = Irrigacao
         fields = '__all__'
         widgets = {
-            'dtProxIrrigacao':  DatePicker(),
-            'horario':  TimePicker(),
-            'duracao':  TimePicker(),
+            # 'dtProxIrrigacao':  DatePicker(),
+            # 'horario':  TimePicker(),
+            # 'duracao':  TimePicker(),
         }
 
 class FormTarefas(forms.ModelForm):
@@ -38,7 +38,7 @@ class FormTarefas(forms.ModelForm):
         model = Tarefa
         fields = '__all__'
         widgets = {
-            'data':  DatePicker(),
+            # 'data':  DatePicker(),
         }
 
 class formUser(forms.ModelForm):
