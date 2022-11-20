@@ -232,7 +232,15 @@ def delete_irrigacoes(request, id):
 
 def cadastrar_tarefas(request):
     form = FormTarefas(request.POST or None)
-    if form.is_valid():
+    tipo_tarefa = request.POST.get("tipoTarefa")
+    area_cultivo = request.POST.get("areacultivo")
+    plantacao = request.POST.get("plantacao")
+
+    if tipo_tarefa == 'AREA' and not area_cultivo:
+        messages.error(request, 'Por favor, informe uma área de cultivo!')
+    elif tipo_tarefa == 'PLANTACAO' and not plantacao:
+        messages.error(request, 'Por favor, informe uma plantação!')
+    elif form.is_valid():
         form.save()
         messages.success(request, 'Sua tarefa cadastrada com sucesso!')
     contexto = {'form': form}
