@@ -77,7 +77,7 @@ def inicio(request):
 
 
 def areas(request):
-    areas = AreaCultivo.objects.filter(user=request.user)
+    areas = AreaCultivo.objects.all()
     qntDisponivel = AreaCultivo.objects.filter(disponivel=True).count()
     qntOcupado = AreaCultivo.objects.filter(disponivel=False).count()
     qntApta = AreaCultivo.objects.filter(apta=True).count()
