@@ -52,7 +52,14 @@
                     <button class="badge btn btn-sm btn_tables btn_green disabled"> Irrigado</button>
                     {% endif %}
                 </td>
-                <td><a href="{% url 'update_irrigacoes' irrigacao.id %}" class="m-1"><i class="fa-solid fa-pencil text-black"></i></a><a data-toggle="modal" data-target="#modal_confirm"><i class="fa-sharp fa-solid fa-trash text-black" data-toggle="modal fade" data-target="#exampleModal"></i></a></td>
+                <td>
+                    <a href="{% url 'update_irrigacoes' irrigacao.id %}" class="m-1">
+                        <i class="fa-solid fa-pencil text-black"></i>
+                    </a>
+                    <a href="{% url 'delete_irrigacoes' irrigacao.id %}">
+                            <i class="fa-sharp fa-solid fa-trash text-black"></i>
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
