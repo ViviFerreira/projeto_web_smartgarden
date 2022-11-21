@@ -19,27 +19,17 @@ class FormPlantacoes(forms.ModelForm):
     class Meta:
         model = Plantacao
         fields = '__all__'
-        widgets = {
-            # 'dtPlantio':  DatePicker(),
-        }
-
+    
 class FormIrrigacoes(forms.ModelForm):
     class Meta:
         model = Irrigacao
         fields = '__all__'
-        widgets = {
-            # 'dtProxIrrigacao':  DatePicker(),
-            # 'horario':  TimePicker(),
-            # 'duracao':  TimePicker(),
-        }
 
 class FormTarefas(forms.ModelForm):
     class Meta:
         model = Tarefa
         fields = '__all__'
-        widgets = {
-            # 'data':  DatePicker(),
-        }
+       
 
 class formUser(forms.ModelForm):
     class Meta:

@@ -9,7 +9,7 @@
 			</div>
 			<div>
 				<li>
-					<a href="{% url "inicio" %}"><i class="fa-solid fa-house"></i></a>
+					<a href="{% url "login" %}"><i class="fa-solid fa-house"></i></a>
 				</li>
 				<!--<li>
 					<a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
@@ -34,8 +34,8 @@
 											</div>
 										</div>
 									{% endif %}
-									<a class="dropdown-item" href="#">Nome:{{user.username}}</a>
-									<a class="dropdown-item" href="#">Email:{{user.email}}</a>
+									<a class="dropdown-item" href="#">{{user.username}}</a>
+									<a class="dropdown-item" href="#">{{user.email}}</a>
 								</div>
 								<div class="footer-dropdown">
 									<a class="dropdown-item" href="{% url 'editar_perfil' user.id %}"><button class="btn btn_salvar">Editar</button></a> {% comment %} falta função de editar a area de perfil {% endcomment %}
